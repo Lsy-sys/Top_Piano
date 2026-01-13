@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date         : Tue Jan 13 11:39:35 2026
+| Date         : Tue Jan 13 11:48:53 2026
 | Host         : ximao running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -max_paths 10 -file Top_Piano_timing_summary_routed.rpt -pb Top_Piano_timing_summary_routed.pb -rpx Top_Piano_timing_summary_routed.rpx -warn_on_violation
 | Design       : Top_Piano
@@ -52,7 +52,7 @@ Table of Contents
 
 1. checking no_clock
 --------------------
- There are 60 register/latch pins with no clock driven by root clock pin: clk (HIGH)
+ There are 63 register/latch pins with no clock driven by root clock pin: clk (HIGH)
 
 
 2. checking constant_clock
@@ -67,7 +67,7 @@ Table of Contents
 
 4. checking unconstrained_internal_endpoints
 --------------------------------------------
- There are 136 pins that are not constrained for maximum delay. (HIGH)
+ There are 145 pins that are not constrained for maximum delay. (HIGH)
 
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
@@ -81,7 +81,7 @@ Table of Contents
 
 6. checking no_output_delay
 ---------------------------
- There is 1 port with no output delay specified. (HIGH)
+ There are 9 ports with no output delay specified. (HIGH)
 
  There are 0 ports with no output delay but user has a false path constraint
 
