@@ -1,23 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcsg324-1" LaunchTime="1768460261">
+<GenRun Id="synth_1" LaunchPart="xc7a35tcsg324-1" LaunchTime="1768273481">
   <File Type="PA-TCL" Name="Top_Piano.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="Top_Piano_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="Top_Piano_reports.tcl"/>
   <File Type="RDS-RDS" Name="Top_Piano.vds"/>
   <File Type="RDS-UTIL" Name="Top_Piano_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="Top_Piano_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="Top_Piano.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="Top_Piano_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="Top_Piano_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
-    <File Path="$PSRCDIR/sources_1/new/vga_render.v">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PSRCDIR/sources_1/new/Top_Piano.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
