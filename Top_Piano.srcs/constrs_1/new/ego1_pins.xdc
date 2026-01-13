@@ -4,6 +4,7 @@ set_property -dict {PACKAGE_PIN P17 IOSTANDARD LVCMOS33} [get_ports clk]
 ## 开关
 set_property -dict {PACKAGE_PIN P5  IOSTANDARD LVCMOS33} [get_ports sw0] ;# 总开关
 set_property -dict {PACKAGE_PIN N4  IOSTANDARD LVCMOS33} [get_ports sw1] ;# 自动演奏开关 (手册5.2)
+set_property -dict {PACKAGE_PIN U4 IOSTANDARD LVCMOS33} [get_ports btn_s4]
 
 ## 音频输出
 set_property -dict {PACKAGE_PIN T1  IOSTANDARD LVCMOS33} [get_ports audio_pwm]
