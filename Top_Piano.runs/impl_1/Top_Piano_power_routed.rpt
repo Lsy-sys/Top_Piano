@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date             : Tue Jan 13 16:33:34 2026
+| Date             : Tue Jan 13 16:46:03 2026
 | Host             : ximao running 64-bit major release  (build 9200)
 | Command          : report_power -file Top_Piano_power_routed.rpt -pb Top_Piano_power_summary_routed.pb -rpx Top_Piano_power_routed.rpx
 | Design           : Top_Piano
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 1.927        |
+| Total On-Chip Power (W)  | 1.720        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 1.851        |
+| Dynamic (W)              | 1.644        |
 | Device Static (W)        | 0.076        |
 | Effective TJA (C/W)      | 4.8          |
-| Max Ambient (C)          | 75.8         |
-| Junction Temperature (C) | 34.2         |
+| Max Ambient (C)          | 76.8         |
+| Junction Temperature (C) | 33.2         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,16 +52,17 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Slice Logic    |     0.282 |      356 |       --- |             --- |
-|   LUT as Logic |     0.234 |      157 |     20800 |            0.75 |
-|   CARRY4       |     0.037 |       20 |      8150 |            0.25 |
-|   Register     |     0.006 |      127 |     41600 |            0.31 |
+| Slice Logic    |     0.238 |      340 |       --- |             --- |
+|   LUT as Logic |     0.186 |      148 |     20800 |            0.71 |
+|   CARRY4       |     0.040 |       20 |      8150 |            0.25 |
+|   Register     |     0.006 |      129 |     41600 |            0.31 |
 |   BUFG         |     0.006 |        1 |        32 |            3.13 |
+|   F7/F8 Muxes  |    <0.001 |        1 |     32600 |           <0.01 |
 |   Others       |     0.000 |        2 |       --- |             --- |
-| Signals        |     0.273 |      302 |       --- |             --- |
-| I/O            |     1.296 |       32 |       210 |           15.24 |
+| Signals        |     0.244 |      283 |       --- |             --- |
+| I/O            |     1.163 |       33 |       210 |           15.71 |
 | Static Power   |     0.076 |          |           |                 |
-| Total          |     1.927 |          |           |                 |
+| Total          |     1.720 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -71,9 +72,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.592 |       0.579 |      0.013 |
-| Vccaux    |       1.800 |     0.060 |       0.047 |      0.013 |
-| Vcco33    |       3.300 |     0.361 |       0.360 |      0.001 |
+| Vccint    |       1.000 |     0.522 |       0.510 |      0.013 |
+| Vccaux    |       1.800 |     0.054 |       0.042 |      0.013 |
+| Vcco33    |       3.300 |     0.322 |       0.321 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
@@ -138,7 +139,7 @@ Table of Contents
 +-----------+-----------+
 | Name      | Power (W) |
 +-----------+-----------+
-| Top_Piano |     1.851 |
+| Top_Piano |     1.644 |
 +-----------+-----------+
 
 
