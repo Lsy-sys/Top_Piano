@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date         : Tue Jan 13 13:32:44 2026
+| Date         : Tue Jan 13 14:36:46 2026
 | Host         : ximao running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file Top_Piano_control_sets_placed.rpt
 | Design       : Top_Piano
@@ -23,8 +23,8 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Number of unique control sets                            |    13 |
-| Unused register locations in slices containing registers |    72 |
+| Number of unique control sets                            |    15 |
+| Unused register locations in slices containing registers |    78 |
 +----------------------------------------------------------+-------+
 
 
@@ -36,9 +36,9 @@ Table of Contents
 +--------+--------------+
 |      1 |            8 |
 |      4 |            1 |
-|      5 |            1 |
+|      6 |            2 |
 |      8 |            1 |
-|    16+ |            2 |
+|    16+ |            3 |
 +--------+--------------+
 
 
@@ -48,34 +48,36 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |               5 |            4 |
+| No           | No                    | No                     |               6 |            4 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              18 |            5 |
-| Yes          | No                    | No                     |               8 |            2 |
+| No           | Yes                   | No                     |              43 |           12 |
+| Yes          | No                    | No                     |              16 |           12 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              33 |           14 |
+| Yes          | Yes                   | No                     |              33 |           17 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+----------------+------------------------+--------------------+------------------+----------------+
-|  Clock Signal  |      Enable Signal     |  Set/Reset Signal  | Slice Load Count | Bel Load Count |
-+----------------+------------------------+--------------------+------------------+----------------+
-|  clk_IBUF_BUFG | p_1_in[1]              | ps2_cnt[3]_i_1_n_0 |                1 |              1 |
-|  clk_IBUF_BUFG | p_1_in[6]              | ps2_cnt[3]_i_1_n_0 |                1 |              1 |
-|  clk_IBUF_BUFG | p_1_in[2]              | ps2_cnt[3]_i_1_n_0 |                1 |              1 |
-|  clk_IBUF_BUFG | p_1_in[3]              | ps2_cnt[3]_i_1_n_0 |                1 |              1 |
-|  clk_IBUF_BUFG | p_1_in[5]              | ps2_cnt[3]_i_1_n_0 |                1 |              1 |
-|  clk_IBUF_BUFG | p_1_in[8]              | ps2_cnt[3]_i_1_n_0 |                1 |              1 |
-|  clk_IBUF_BUFG | p_1_in[4]              | ps2_cnt[3]_i_1_n_0 |                1 |              1 |
-|  clk_IBUF_BUFG | p_1_in[7]              | ps2_cnt[3]_i_1_n_0 |                1 |              1 |
-|  clk_IBUF_BUFG | ps2_fall               | ps2_cnt[3]_i_1_n_0 |                1 |              4 |
-|  clk_IBUF_BUFG |                        |                    |                4 |              5 |
-|  clk_IBUF_BUFG | key_code[7]_i_1_n_0    |                    |                2 |              8 |
-|  clk_IBUF_BUFG |                        | pwm_cnt[0]_i_1_n_0 |                5 |             18 |
-|  clk_IBUF_BUFG | period_reg[17]_i_2_n_0 | display_num        |                5 |             21 |
-+----------------+------------------------+--------------------+------------------+----------------+
++----------------+------------------------+----------------------+------------------+----------------+
+|  Clock Signal  |      Enable Signal     |   Set/Reset Signal   | Slice Load Count | Bel Load Count |
++----------------+------------------------+----------------------+------------------+----------------+
+|  clk_IBUF_BUFG | ps2_buffer[7]_i_1_n_0  |                      |                1 |              1 |
+|  clk_IBUF_BUFG | ps2_buffer[2]_i_1_n_0  |                      |                1 |              1 |
+|  clk_IBUF_BUFG | ps2_buffer[6]_i_1_n_0  |                      |                1 |              1 |
+|  clk_IBUF_BUFG | ps2_buffer[3]_i_1_n_0  |                      |                1 |              1 |
+|  clk_IBUF_BUFG | ps2_buffer[8]_i_1_n_0  |                      |                1 |              1 |
+|  clk_IBUF_BUFG | ps2_buffer[5]_i_1_n_0  |                      |                1 |              1 |
+|  clk_IBUF_BUFG | ps2_buffer[4]_i_1_n_0  |                      |                1 |              1 |
+|  clk_IBUF_BUFG | ps2_buffer[1]_i_1_n_0  |                      |                1 |              1 |
+|  clk_IBUF_BUFG | ps2_fall               | ps2_cnt0             |                1 |              4 |
+|  clk_IBUF_BUFG |                        |                      |                4 |              6 |
+|  clk_IBUF_BUFG | score_ptr[5]_i_2_n_0   | score_ptr[5]_i_1_n_0 |                4 |              6 |
+|  clk_IBUF_BUFG | key_code[7]_i_1_n_0    |                      |                4 |              8 |
+|  clk_IBUF_BUFG |                        | pwm_cnt[0]_i_1_n_0   |                5 |             18 |
+|  clk_IBUF_BUFG | period_reg[17]_i_2_n_0 | octave_num           |               12 |             23 |
+|  clk_IBUF_BUFG |                        | beat_cnt[0]_i_1_n_0  |                7 |             25 |
++----------------+------------------------+----------------------+------------------+----------------+
 
 

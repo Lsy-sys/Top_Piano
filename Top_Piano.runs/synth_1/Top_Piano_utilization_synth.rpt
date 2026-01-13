@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date         : Tue Jan 13 13:32:20 2026
+| Date         : Tue Jan 13 14:36:21 2026
 | Host         : ximao running 64-bit major release  (build 9200)
 | Command      : report_utilization -file Top_Piano_utilization_synth.rpt -pb Top_Piano_utilization_synth.pb
 | Design       : Top_Piano
@@ -30,11 +30,11 @@ Table of Contents
 +-------------------------+------+-------+-----------+-------+
 |        Site Type        | Used | Fixed | Available | Util% |
 +-------------------------+------+-------+-----------+-------+
-| Slice LUTs*             |   54 |     0 |     20800 |  0.26 |
-|   LUT as Logic          |   54 |     0 |     20800 |  0.26 |
+| Slice LUTs*             |  133 |     0 |     20800 |  0.64 |
+|   LUT as Logic          |  133 |     0 |     20800 |  0.64 |
 |   LUT as Memory         |    0 |     0 |      9600 |  0.00 |
-| Slice Registers         |   64 |     0 |     41600 |  0.15 |
-|   Register as Flip Flop |   64 |     0 |     41600 |  0.15 |
+| Slice Registers         |   98 |     0 |     41600 |  0.24 |
+|   Register as Flip Flop |   98 |     0 |     41600 |  0.24 |
 |   Register as Latch     |    0 |     0 |     41600 |  0.00 |
 | F7 Muxes                |    0 |     0 |     16300 |  0.00 |
 | F8 Muxes                |    0 |     0 |      8150 |  0.00 |
@@ -57,7 +57,7 @@ Table of Contents
 | 0     |          Yes |           - |          Set |
 | 0     |          Yes |           - |        Reset |
 | 0     |          Yes |         Set |            - |
-| 64    |          Yes |       Reset |            - |
+| 98    |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -90,7 +90,7 @@ Table of Contents
 +-----------------------------+------+-------+-----------+-------+
 |          Site Type          | Used | Fixed | Available | Util% |
 +-----------------------------+------+-------+-----------+-------+
-| Bonded IOB                  |   30 |     0 |       210 | 14.29 |
+| Bonded IOB                  |   31 |     0 |       210 | 14.76 |
 | Bonded IPADs                |    0 |     0 |         2 |  0.00 |
 | PHY_CONTROL                 |    0 |     0 |         5 |  0.00 |
 | PHASER_REF                  |    0 |     0 |         5 |  0.00 |
@@ -146,16 +146,16 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| FDRE     |   64 |        Flop & Latch |
-| LUT4     |   35 |                 LUT |
+| FDRE     |   98 |        Flop & Latch |
+| LUT6     |   56 |                 LUT |
+| LUT4     |   46 |                 LUT |
+| LUT5     |   27 |                 LUT |
 | OBUF     |   26 |                  IO |
-| LUT5     |   19 |                 LUT |
-| LUT6     |   15 |                 LUT |
-| CARRY4   |    8 |          CarryLogic |
-| LUT3     |    5 |                 LUT |
-| IBUF     |    4 |                  IO |
-| LUT2     |    3 |                 LUT |
-| LUT1     |    2 |                 LUT |
+| LUT2     |   23 |                 LUT |
+| LUT3     |   22 |                 LUT |
+| CARRY4   |   15 |          CarryLogic |
+| IBUF     |    5 |                  IO |
+| LUT1     |    3 |                 LUT |
 | BUFG     |    1 |               Clock |
 +----------+------+---------------------+
 
