@@ -1,3 +1,6 @@
+## 总控开关 (SW7)
+# 当开关拨至高电平时系统工作，低电平时强制复位
+set_property -dict {PACKAGE_PIN P5  IOSTANDARD LVCMOS33} [get_ports sw0]
 ## 时钟与音频
 set_property -dict {PACKAGE_PIN P17 IOSTANDARD LVCMOS33} [get_ports clk]
 set_property -dict {PACKAGE_PIN T1  IOSTANDARD LVCMOS33} [get_ports audio_pwm]
