@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date         : Tue Jan 13 11:48:52 2026
+| Date         : Tue Jan 13 13:06:17 2026
 | Host         : ximao running 64-bit major release  (build 9200)
 | Command      : report_methodology -file Top_Piano_methodology_drc_routed.rpt -pb Top_Piano_methodology_drc_routed.pb -rpx Top_Piano_methodology_drc_routed.rpx
 | Design       : Top_Piano
@@ -23,11 +23,11 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 63
+             Violations found: 64
 +-----------+----------+-----------------------------+------------+
 | Rule      | Severity | Description                 | Violations |
 +-----------+----------+-----------------------------+------------+
-| TIMING-17 | Warning  | Non-clocked sequential cell | 63         |
+| TIMING-17 | Warning  | Non-clocked sequential cell | 64         |
 +-----------+----------+-----------------------------+------------+
 
 2. REPORT DETAILS
@@ -159,190 +159,195 @@ Related violations: <none>
 
 TIMING-17#26 Warning
 Non-clocked sequential cell  
-The clock pin period_reg_reg[5]/C is not reached by a timing clock
+The clock pin period_reg_reg[4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#27 Warning
 Non-clocked sequential cell  
-The clock pin period_reg_reg[6]/C is not reached by a timing clock
+The clock pin period_reg_reg[5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#28 Warning
 Non-clocked sequential cell  
-The clock pin period_reg_reg[7]/C is not reached by a timing clock
+The clock pin period_reg_reg[6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#29 Warning
 Non-clocked sequential cell  
-The clock pin period_reg_reg[8]/C is not reached by a timing clock
+The clock pin period_reg_reg[7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#30 Warning
 Non-clocked sequential cell  
-The clock pin period_reg_reg[9]/C is not reached by a timing clock
+The clock pin period_reg_reg[8]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#31 Warning
 Non-clocked sequential cell  
-The clock pin ps2_buffer_reg[1]/C is not reached by a timing clock
+The clock pin period_reg_reg[9]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#32 Warning
 Non-clocked sequential cell  
-The clock pin ps2_buffer_reg[2]/C is not reached by a timing clock
+The clock pin ps2_buffer_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#33 Warning
 Non-clocked sequential cell  
-The clock pin ps2_buffer_reg[3]/C is not reached by a timing clock
+The clock pin ps2_buffer_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#34 Warning
 Non-clocked sequential cell  
-The clock pin ps2_buffer_reg[4]/C is not reached by a timing clock
+The clock pin ps2_buffer_reg[3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#35 Warning
 Non-clocked sequential cell  
-The clock pin ps2_buffer_reg[5]/C is not reached by a timing clock
+The clock pin ps2_buffer_reg[4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#36 Warning
 Non-clocked sequential cell  
-The clock pin ps2_buffer_reg[6]/C is not reached by a timing clock
+The clock pin ps2_buffer_reg[5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#37 Warning
 Non-clocked sequential cell  
-The clock pin ps2_buffer_reg[7]/C is not reached by a timing clock
+The clock pin ps2_buffer_reg[6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#38 Warning
 Non-clocked sequential cell  
-The clock pin ps2_buffer_reg[8]/C is not reached by a timing clock
+The clock pin ps2_buffer_reg[7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#39 Warning
 Non-clocked sequential cell  
-The clock pin ps2_clk_last_reg/C is not reached by a timing clock
+The clock pin ps2_buffer_reg[8]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#40 Warning
 Non-clocked sequential cell  
-The clock pin ps2_clk_sync_reg/C is not reached by a timing clock
+The clock pin ps2_clk_last_reg/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#41 Warning
 Non-clocked sequential cell  
-The clock pin ps2_cnt_reg[0]/C is not reached by a timing clock
+The clock pin ps2_clk_sync_reg/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#42 Warning
 Non-clocked sequential cell  
-The clock pin ps2_cnt_reg[1]/C is not reached by a timing clock
+The clock pin ps2_cnt_reg[0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#43 Warning
 Non-clocked sequential cell  
-The clock pin ps2_cnt_reg[2]/C is not reached by a timing clock
+The clock pin ps2_cnt_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#44 Warning
 Non-clocked sequential cell  
-The clock pin ps2_cnt_reg[3]/C is not reached by a timing clock
+The clock pin ps2_cnt_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#45 Warning
 Non-clocked sequential cell  
-The clock pin pwm_cnt_reg[0]/C is not reached by a timing clock
+The clock pin ps2_cnt_reg[3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#46 Warning
 Non-clocked sequential cell  
-The clock pin pwm_cnt_reg[10]/C is not reached by a timing clock
+The clock pin pwm_cnt_reg[0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#47 Warning
 Non-clocked sequential cell  
-The clock pin pwm_cnt_reg[11]/C is not reached by a timing clock
+The clock pin pwm_cnt_reg[10]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#48 Warning
 Non-clocked sequential cell  
-The clock pin pwm_cnt_reg[12]/C is not reached by a timing clock
+The clock pin pwm_cnt_reg[11]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#49 Warning
 Non-clocked sequential cell  
-The clock pin pwm_cnt_reg[13]/C is not reached by a timing clock
+The clock pin pwm_cnt_reg[12]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#50 Warning
 Non-clocked sequential cell  
-The clock pin pwm_cnt_reg[14]/C is not reached by a timing clock
+The clock pin pwm_cnt_reg[13]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#51 Warning
 Non-clocked sequential cell  
-The clock pin pwm_cnt_reg[15]/C is not reached by a timing clock
+The clock pin pwm_cnt_reg[14]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#52 Warning
 Non-clocked sequential cell  
-The clock pin pwm_cnt_reg[16]/C is not reached by a timing clock
+The clock pin pwm_cnt_reg[15]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#53 Warning
 Non-clocked sequential cell  
-The clock pin pwm_cnt_reg[17]/C is not reached by a timing clock
+The clock pin pwm_cnt_reg[16]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#54 Warning
 Non-clocked sequential cell  
-The clock pin pwm_cnt_reg[1]/C is not reached by a timing clock
+The clock pin pwm_cnt_reg[17]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#55 Warning
 Non-clocked sequential cell  
-The clock pin pwm_cnt_reg[2]/C is not reached by a timing clock
+The clock pin pwm_cnt_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#56 Warning
 Non-clocked sequential cell  
-The clock pin pwm_cnt_reg[3]/C is not reached by a timing clock
+The clock pin pwm_cnt_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#57 Warning
 Non-clocked sequential cell  
-The clock pin pwm_cnt_reg[4]/C is not reached by a timing clock
+The clock pin pwm_cnt_reg[3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#58 Warning
 Non-clocked sequential cell  
-The clock pin pwm_cnt_reg[5]/C is not reached by a timing clock
+The clock pin pwm_cnt_reg[4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#59 Warning
 Non-clocked sequential cell  
-The clock pin pwm_cnt_reg[6]/C is not reached by a timing clock
+The clock pin pwm_cnt_reg[5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#60 Warning
 Non-clocked sequential cell  
-The clock pin pwm_cnt_reg[7]/C is not reached by a timing clock
+The clock pin pwm_cnt_reg[6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#61 Warning
 Non-clocked sequential cell  
-The clock pin pwm_cnt_reg[8]/C is not reached by a timing clock
+The clock pin pwm_cnt_reg[7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#62 Warning
 Non-clocked sequential cell  
-The clock pin pwm_cnt_reg[9]/C is not reached by a timing clock
+The clock pin pwm_cnt_reg[8]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#63 Warning
+Non-clocked sequential cell  
+The clock pin pwm_cnt_reg[9]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#64 Warning
 Non-clocked sequential cell  
 The clock pin pwm_out_reg/C is not reached by a timing clock
 Related violations: <none>

@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date         : Tue Jan 13 11:48:39 2026
+| Date         : Tue Jan 13 13:06:04 2026
 | Host         : ximao running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file Top_Piano_control_sets_placed.rpt
 | Design       : Top_Piano
@@ -24,7 +24,7 @@ Table of Contents
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
 | Number of unique control sets                            |    13 |
-| Unused register locations in slices containing registers |    73 |
+| Unused register locations in slices containing registers |    72 |
 +----------------------------------------------------------+-------+
 
 
@@ -51,9 +51,9 @@ Table of Contents
 | No           | No                    | No                     |               5 |            3 |
 | No           | No                    | Yes                    |               0 |            0 |
 | No           | Yes                   | No                     |              18 |            5 |
-| Yes          | No                    | No                     |              16 |           11 |
+| Yes          | No                    | No                     |              16 |           14 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              24 |            6 |
+| Yes          | Yes                   | No                     |              25 |            6 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -63,19 +63,19 @@ Table of Contents
 +----------------+------------------------+------------------------+------------------+----------------+
 |  Clock Signal  |      Enable Signal     |    Set/Reset Signal    | Slice Load Count | Bel Load Count |
 +----------------+------------------------+------------------------+------------------+----------------+
+|  clk_IBUF_BUFG | ps2_buffer[5]_i_1_n_0  |                        |                1 |              1 |
 |  clk_IBUF_BUFG | ps2_buffer[1]_i_1_n_0  |                        |                1 |              1 |
 |  clk_IBUF_BUFG | ps2_buffer[2]_i_1_n_0  |                        |                1 |              1 |
 |  clk_IBUF_BUFG | ps2_buffer[3]_i_1_n_0  |                        |                1 |              1 |
-|  clk_IBUF_BUFG | ps2_buffer[5]_i_1_n_0  |                        |                1 |              1 |
-|  clk_IBUF_BUFG | ps2_buffer[7]_i_1_n_0  |                        |                1 |              1 |
-|  clk_IBUF_BUFG | ps2_buffer[8]_i_1_n_0  |                        |                1 |              1 |
 |  clk_IBUF_BUFG | ps2_buffer[4]_i_1_n_0  |                        |                1 |              1 |
+|  clk_IBUF_BUFG | ps2_buffer[7]_i_1_n_0  |                        |                1 |              1 |
 |  clk_IBUF_BUFG | ps2_buffer[6]_i_1_n_0  |                        |                1 |              1 |
-|  clk_IBUF_BUFG | ps2_fall               | ps2_cnt[3]_i_1_n_0     |                1 |              4 |
+|  clk_IBUF_BUFG | ps2_buffer[8]_i_1_n_0  |                        |                1 |              1 |
+|  clk_IBUF_BUFG | ps2_cnt[3]_i_2_n_0     | ps2_cnt[3]_i_1_n_0     |                1 |              4 |
 |  clk_IBUF_BUFG |                        |                        |                3 |              5 |
-|  clk_IBUF_BUFG | key_code               |                        |                3 |              8 |
+|  clk_IBUF_BUFG | key_code               |                        |                6 |              8 |
 |  clk_IBUF_BUFG |                        | pwm_cnt                |                5 |             18 |
-|  clk_IBUF_BUFG | period_reg[17]_i_2_n_0 | period_reg[17]_i_1_n_0 |                5 |             20 |
+|  clk_IBUF_BUFG | period_reg[17]_i_2_n_0 | period_reg[17]_i_1_n_0 |                5 |             21 |
 +----------------+------------------------+------------------------+------------------+----------------+
 
 

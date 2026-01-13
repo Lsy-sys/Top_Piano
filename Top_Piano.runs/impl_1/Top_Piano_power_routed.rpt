@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date             : Tue Jan 13 11:48:52 2026
+| Date             : Tue Jan 13 13:06:18 2026
 | Host             : ximao running 64-bit major release  (build 9200)
 | Command          : report_power -file Top_Piano_power_routed.rpt -pb Top_Piano_power_summary_routed.pb -rpx Top_Piano_power_routed.rpx
 | Design           : Top_Piano
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 1.841        |
+| Total On-Chip Power (W)  | 1.862        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 1.765        |
+| Dynamic (W)              | 1.786        |
 | Device Static (W)        | 0.076        |
 | Effective TJA (C/W)      | 4.8          |
-| Max Ambient (C)          | 76.2         |
-| Junction Temperature (C) | 33.8         |
+| Max Ambient (C)          | 76.1         |
+| Junction Temperature (C) | 33.9         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,16 +52,16 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Slice Logic    |     0.143 |      149 |       --- |             --- |
-|   LUT as Logic |     0.112 |       49 |     20800 |            0.24 |
-|   CARRY4       |     0.014 |        8 |      8150 |            0.10 |
-|   Register     |     0.011 |       63 |     41600 |            0.15 |
+| Slice Logic    |     0.145 |      152 |       --- |             --- |
+|   LUT as Logic |     0.114 |       54 |     20800 |            0.26 |
+|   CARRY4       |     0.015 |        8 |      8150 |            0.10 |
+|   Register     |     0.011 |       64 |     41600 |            0.15 |
 |   BUFG         |     0.006 |        1 |        32 |            3.13 |
 |   Others       |     0.000 |        2 |       --- |             --- |
-| Signals        |     0.148 |      106 |       --- |             --- |
-| I/O            |     1.474 |       29 |       210 |           13.81 |
+| Signals        |     0.151 |      105 |       --- |             --- |
+| I/O            |     1.490 |       29 |       210 |           13.81 |
 | Static Power   |     0.076 |          |           |                 |
-| Total          |     1.841 |          |           |                 |
+| Total          |     1.862 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -71,9 +71,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.315 |       0.302 |      0.013 |
-| Vccaux    |       1.800 |     0.066 |       0.054 |      0.013 |
-| Vcco33    |       3.300 |     0.415 |       0.414 |      0.001 |
+| Vccint    |       1.000 |     0.321 |       0.308 |      0.013 |
+| Vccaux    |       1.800 |     0.067 |       0.054 |      0.013 |
+| Vcco33    |       3.300 |     0.419 |       0.418 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
@@ -138,7 +138,7 @@ Table of Contents
 +-----------+-----------+
 | Name      | Power (W) |
 +-----------+-----------+
-| Top_Piano |     1.765 |
+| Top_Piano |     1.786 |
 +-----------+-----------+
 
 
