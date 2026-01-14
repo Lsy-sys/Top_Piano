@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date         : Tue Jan 13 16:45:50 2026
+| Date         : Wed Jan 14 10:12:38 2026
 | Host         : ximao running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file Top_Piano_control_sets_placed.rpt
 | Design       : Top_Piano
@@ -23,8 +23,8 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Number of unique control sets                            |    18 |
-| Unused register locations in slices containing registers |    95 |
+| Number of unique control sets                            |    20 |
+| Unused register locations in slices containing registers |   106 |
 +----------------------------------------------------------+-------+
 
 
@@ -37,9 +37,8 @@ Table of Contents
 |      1 |           10 |
 |      4 |            1 |
 |      6 |            1 |
-|      7 |            1 |
 |      8 |            1 |
-|    16+ |            4 |
+|    16+ |            7 |
 +--------+--------------+
 
 
@@ -49,12 +48,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |               7 |            6 |
+| No           | No                    | No                     |              18 |           10 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              43 |           12 |
-| Yes          | No                    | No                     |              16 |           11 |
+| No           | Yes                   | No                     |              61 |           17 |
+| Yes          | No                    | No                     |              16 |           12 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              63 |           20 |
+| Yes          | Yes                   | No                     |              79 |           32 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -64,24 +63,26 @@ Table of Contents
 +----------------+------------------------+------------------------+------------------+----------------+
 |  Clock Signal  |      Enable Signal     |    Set/Reset Signal    | Slice Load Count | Bel Load Count |
 +----------------+------------------------+------------------------+------------------+----------------+
-|  clk_IBUF_BUFG | ps2_buffer[8]_i_1_n_0  |                        |                1 |              1 |
-|  clk_IBUF_BUFG | ps2_buffer[1]_i_1_n_0  |                        |                1 |              1 |
-|  clk_IBUF_BUFG | ps2_buffer[5]_i_1_n_0  |                        |                1 |              1 |
-|  clk_IBUF_BUFG | ps2_buffer[4]_i_1_n_0  |                        |                1 |              1 |
 |  clk_IBUF_BUFG | ps2_buffer[2]_i_1_n_0  |                        |                1 |              1 |
-|  clk_IBUF_BUFG | ps2_buffer[7]_i_1_n_0  |                        |                1 |              1 |
 |  clk_IBUF_BUFG | ps2_buffer[6]_i_1_n_0  |                        |                1 |              1 |
+|  clk_IBUF_BUFG | ps2_buffer[7]_i_1_n_0  |                        |                1 |              1 |
 |  clk_IBUF_BUFG | ps2_buffer[3]_i_1_n_0  |                        |                1 |              1 |
+|  clk_IBUF_BUFG | ps2_buffer[4]_i_1_n_0  |                        |                1 |              1 |
+|  clk_IBUF_BUFG | ps2_buffer[1]_i_1_n_0  |                        |                1 |              1 |
+|  clk_IBUF_BUFG | ps2_buffer[8]_i_1_n_0  |                        |                1 |              1 |
+|  clk_IBUF_BUFG | ps2_buffer[5]_i_1_n_0  |                        |                1 |              1 |
 |  clk_IBUF_BUFG | song_select[1]_i_2_n_0 | song_select[1]_i_1_n_0 |                1 |              1 |
 |  clk_IBUF_BUFG | song_select[0]_i_2_n_0 | play_en0               |                1 |              1 |
 |  clk_IBUF_BUFG | ps2_fall               | ps2_cnt[3]_i_1_n_0     |                2 |              4 |
-|  clk_IBUF_BUFG | play_en25_in           | score_ptr[5]_i_1_n_0   |                3 |              6 |
-|  clk_IBUF_BUFG |                        |                        |                6 |              7 |
-|  clk_IBUF_BUFG | key_code[7]_i_1_n_0    |                        |                3 |              8 |
-|  clk_IBUF_BUFG |                        | pwm_cnt[0]_i_1_n_0     |                5 |             18 |
+|  clk_IBUF_BUFG | play_en2               | score_ptr[5]_i_1_n_0   |                2 |              6 |
+|  clk_IBUF_BUFG | key_code[7]_i_1_n_0    |                        |                4 |              8 |
+|  clk_IBUF_BUFG | sel                    | sq_wave                |                4 |             16 |
+|  clk_IBUF_BUFG |                        |                        |               10 |             18 |
+|  clk_IBUF_BUFG |                        | sine_acc               |                5 |             18 |
+|  clk_IBUF_BUFG |                        | sq_cnt                 |                5 |             18 |
 |  clk_IBUF_BUFG | timeout_cnt[0]_i_2_n_0 | timeout_cnt[0]_i_1_n_0 |                5 |             20 |
 |  clk_IBUF_BUFG |                        | beat_cnt               |                7 |             25 |
-|  clk_IBUF_BUFG | playing_key[7]_i_2_n_0 | playing_key            |                8 |             31 |
+|  clk_IBUF_BUFG | playing_key[7]_i_2_n_0 | playing_key            |               17 |             31 |
 +----------------+------------------------+------------------------+------------------+----------------+
 
 
