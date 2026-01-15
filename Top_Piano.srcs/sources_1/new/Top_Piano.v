@@ -155,50 +155,94 @@ module Top_Piano(
         end else if (song_select == 2'd2) begin
             case(score_ptr)
                // --- 第1句：团结在这里凝聚 ---
-0: begin auto_key_code = L5; current_note_duration = LEN_1_2; end
-1: begin auto_key_code = K3; current_note_duration = LEN_1_2 + LEN_1_4; end
-2: begin auto_key_code = K3; current_note_duration = LEN_1_4; end
-3: begin auto_key_code = K3; current_note_duration = LEN_1_4 + LEN_1_8; end
-4: begin auto_key_code = K3; current_note_duration = LEN_1_8; end
-5: begin auto_key_code = K4; current_note_duration = LEN_1_4 + LEN_1_8; end
-6: begin auto_key_code = K5; current_note_duration = LEN_1_8; end
-7: begin auto_key_code = K2; current_note_duration = LEN_1 + LEN_1_2; end // 3拍长音
-// --- 第2句：勤奋从这里出发 ---
-8: begin auto_key_code = L5; current_note_duration = LEN_1_2; end  
-9: begin auto_key_code = K2; current_note_duration = LEN_1_2 + LEN_1_4; end
-10:begin auto_key_code = K2; current_note_duration = LEN_1_4; end
-11:begin auto_key_code = K2; current_note_duration = LEN_1_4 + LEN_1_8; end
-12:begin auto_key_code = K2; current_note_duration = LEN_1_8; end
-13:begin auto_key_code = K3; current_note_duration = LEN_1_4 + LEN_1_8; end
-14:begin auto_key_code = K4; current_note_duration = LEN_1_8; end
-15:begin auto_key_code = K3; current_note_duration = LEN_1 + LEN_1_2; end
-// --- 第3句：给我一双理想的翅膀 ---
-16:begin auto_key_code = K1; current_note_duration = LEN_1_2; end
-17:begin auto_key_code = K6; current_note_duration = LEN_1_2 + LEN_1_4; end
-18:begin auto_key_code = K6; current_note_duration = LEN_1_4; end
-19:begin auto_key_code = K6; current_note_duration = LEN_1_2; end
-20:begin auto_key_code = K6; current_note_duration = LEN_1_8; end
-21:begin auto_key_code = K7; current_note_duration = LEN_1_8; end
-22:begin auto_key_code = H1; current_note_duration = LEN_1_8; end
-23:begin auto_key_code = K5; current_note_duration = LEN_1_2; end
-24:begin auto_key_code = K4; current_note_duration = LEN_1_2; end
-25:begin auto_key_code = K3; current_note_duration = LEN_1_2 + LEN_1_4; end // 附点四分
-// --- 第4句：追赶东方灿烂的朝霞 ---
-26:begin auto_key_code = L6; current_note_duration = LEN_1_4; end
-27:begin auto_key_code = K4; current_note_duration = LEN_1_2 + LEN_1_4; end
-28:begin auto_key_code = K4; current_note_duration = LEN_1_4; end
-29:begin auto_key_code = K4; current_note_duration = LEN_1_2; end
-30:begin auto_key_code = K4; current_note_duration = LEN_1_8; end
-31:begin auto_key_code = K5; current_note_duration = LEN_1_8; end
-32:begin auto_key_code = K6; current_note_duration = LEN_1_8; end
-33:begin auto_key_code = K5; current_note_duration = LEN_1_2; end
-34:begin auto_key_code = K2; current_note_duration = LEN_1; end   // 2拍
+                0: begin auto_key_code = L5; current_note_duration = LEN_1_2; end
+                1: begin auto_key_code = K3; current_note_duration = LEN_1_2 + LEN_1_4; end
+                2: begin auto_key_code = K3; current_note_duration = LEN_1_4; end
+                3: begin auto_key_code = K3; current_note_duration = LEN_1_4 + LEN_1_8; end
+                4: begin auto_key_code = K3; current_note_duration = LEN_1_8; end
+                5: begin auto_key_code = K4; current_note_duration = LEN_1_4 + LEN_1_8; end
+                6: begin auto_key_code = K5; current_note_duration = LEN_1_8; end
+                7: begin auto_key_code = K2; current_note_duration = LEN_1 + LEN_1_2; end // 3拍长音
+                // --- 第2句：勤奋从这里出发 ---
+                8: begin auto_key_code = L5; current_note_duration = LEN_1_2; end  
+                9: begin auto_key_code = K2; current_note_duration = LEN_1_2 + LEN_1_4; end
+                10:begin auto_key_code = K2; current_note_duration = LEN_1_4; end
+                11:begin auto_key_code = K2; current_note_duration = LEN_1_4 + LEN_1_8; end
+                12:begin auto_key_code = K2; current_note_duration = LEN_1_8; end
+                13:begin auto_key_code = K3; current_note_duration = LEN_1_4 + LEN_1_8; end
+                14:begin auto_key_code = K4; current_note_duration = LEN_1_8; end
+                15:begin auto_key_code = K3; current_note_duration = LEN_1 + LEN_1_2; end
+                // --- 第3句：给我一双理想的翅膀 ---
+                16:begin auto_key_code = K1; current_note_duration = LEN_1_2; end
+                17:begin auto_key_code = K6; current_note_duration = LEN_1_2 + LEN_1_4; end
+                18:begin auto_key_code = K6; current_note_duration = LEN_1_4; end
+                19:begin auto_key_code = K6; current_note_duration = LEN_1_2; end
+                20:begin auto_key_code = K6; current_note_duration = LEN_1_8; end
+                21:begin auto_key_code = K7; current_note_duration = LEN_1_8; end
+                22:begin auto_key_code = H1; current_note_duration = LEN_1_8; end
+                23:begin auto_key_code = K5; current_note_duration = LEN_1_2; end
+                24:begin auto_key_code = K4; current_note_duration = LEN_1_2; end
+                25:begin auto_key_code = K3; current_note_duration = LEN_1_2 + LEN_1_4; end // 附点四分
+                // --- 第4句：追赶东方灿烂的朝霞 ---
+                26:begin auto_key_code = L6; current_note_duration = LEN_1_4; end
+                27:begin auto_key_code = K4; current_note_duration = LEN_1_2 + LEN_1_4; end
+                28:begin auto_key_code = K4; current_note_duration = LEN_1_4; end
+                29:begin auto_key_code = K4; current_note_duration = LEN_1_2; end
+                30:begin auto_key_code = K4; current_note_duration = LEN_1_8; end
+                31:begin auto_key_code = K5; current_note_duration = LEN_1_8; end
+                32:begin auto_key_code = K6; current_note_duration = LEN_1_8; end
+                33:begin auto_key_code = K5; current_note_duration = LEN_1_2; end
+                34:begin auto_key_code = K2; current_note_duration = LEN_1; end   // 2拍
 
             endcase
         end else if (song_select == 2'd3) begin
             case(score_ptr)
-                0,1: auto_key_code = K1; 2,3: auto_key_code = K2; 4,5: auto_key_code = K3;
-                default: auto_key_code = NO;
+                0: begin auto_key_code = K6; current_note_duration = LEN_1_4; end
+                1: begin auto_key_code = K5; current_note_duration = LEN_1_4; end
+                2: begin auto_key_code = K5; current_note_duration = LEN_1_4; end
+                3: begin auto_key_code = K4; current_note_duration = LEN_1_4; end
+                4: begin auto_key_code = K4; current_note_duration = LEN_1_4; end
+                5: begin auto_key_code = H1; current_note_duration = LEN_1_4; end
+                6: begin auto_key_code = K4; current_note_duration = LEN_1_2; end
+                7: begin auto_key_code = K3; current_note_duration = LEN_1_4; end
+                8: begin auto_key_code = K4; current_note_duration = LEN_1_4+LEN_1; end  
+                9: begin auto_key_code = 0; current_note_duration = LEN_1_2; end
+                
+                10:begin auto_key_code = K6; current_note_duration = LEN_1_4; end
+                11:begin auto_key_code = K5; current_note_duration = LEN_1_4; end
+                12:begin auto_key_code = K5; current_note_duration = LEN_1_4; end
+                13:begin auto_key_code = K4; current_note_duration = LEN_1_4; end
+                14:begin auto_key_code = K1; current_note_duration = LEN_1_4; end
+                15:begin auto_key_code = K6; current_note_duration = LEN_1_4; end
+                16:begin auto_key_code = K5; current_note_duration = LEN_1_2; end
+                17:begin auto_key_code = K6; current_note_duration = LEN_1_4; end
+                18:begin auto_key_code = K4; current_note_duration = LEN_1_4+LEN_1; end
+                19:begin auto_key_code = 0; current_note_duration = LEN_1_2; end
+                
+                20:begin auto_key_code = K6; current_note_duration = LEN_1_4; end
+                21:begin auto_key_code = K5; current_note_duration = LEN_1_4; end
+                22:begin auto_key_code = K5; current_note_duration = LEN_1_4; end
+                23:begin auto_key_code = K4; current_note_duration = LEN_1_4; end
+                24:begin auto_key_code = K4; current_note_duration = LEN_1_4; end
+                25:begin auto_key_code = H1; current_note_duration = LEN_1_4; end 
+                26:begin auto_key_code = H1; current_note_duration = LEN_1_4; end
+                27:begin auto_key_code = H1; current_note_duration = LEN_1_4; end
+                28:begin auto_key_code = K5; current_note_duration = LEN_1_4; end
+                29:begin auto_key_code = K4; current_note_duration = LEN_1_4+LEN_1; end
+                30:begin auto_key_code = 0; current_note_duration = LEN_1_2; end
+                
+                31:begin auto_key_code = K2; current_note_duration = LEN_1_4; end
+                32:begin auto_key_code = K4; current_note_duration = LEN_1_4; end
+                33:begin auto_key_code = K5; current_note_duration = LEN_1_2; end
+                34:begin auto_key_code = K5; current_note_duration = LEN_1_4; end  
+                20:begin auto_key_code = K4; current_note_duration = LEN_1_4; end
+                21:begin auto_key_code = K5; current_note_duration = LEN_1_4; end
+                22:begin auto_key_code = K6; current_note_duration = LEN_1_4; end
+                23:begin auto_key_code = K5; current_note_duration = LEN_1_4; end
+                24:begin auto_key_code = K5; current_note_duration = LEN_1_4; end
+                25:begin auto_key_code = K5; current_note_duration = LEN_1_4; end 
+                26:begin auto_key_code = K4; current_note_duration = LEN_1_2+LEN_1_4; end
+
             endcase
         end
     end
