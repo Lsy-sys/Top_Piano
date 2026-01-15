@@ -252,8 +252,8 @@ end
     
     vga_render u_vga_inst (
         .clk_100m(clk),             // 接入 P17 时钟 
-        .display_num(display_num),   // 接入内部 note 寄存器 [cite: 12]
-        .octave_num(octave_num),     // 接入内部音阶寄存器 [cite: 12]
+        .display_num(display_num),   // 接入内部 note 寄存器 
+        .octave_num(octave_num),     // 接入内部音阶寄存器 
         .sw1(sw1),                  // 接入自动模式开关 
         .vga_r(vga_r),
         .vga_g(vga_g),
