@@ -1,14 +1,13 @@
 module vga_render(
-    input clk_100m,
-    input [3:0] display_num,
-    input [3:0] octave_num,
-    input note_trigger_toggle, 
-    input sw1,
+    input clk_100m,         // 系统 100MHz 时钟
+    input [3:0] display_num, // 来自 Top_Piano 的当前音符 (1-7)
+    input [3:0] octave_num,  // 来自 Top_Piano 的当前音程 (1-3)
+    input sw1,               // 自动模式状态
     output reg [3:0] vga_r, vga_g, vga_b,
     output vga_hs, vga_vs
 );
 
-    // --- 1. 时钟与同步 ---
+    // --- A. 时钟与同步信号 ---
     reg [1:0] clk_div;
     always @(posedge clk_100m) clk_div <= clk_div + 1;
     wire pix_clk = clk_div[1];
@@ -20,7 +19,7 @@ module vga_render(
     always @(posedge pix_clk) begin
         if (h_cnt == H_TOTAL - 1) begin
             h_cnt <= 0;
-            if (v_cnt == V_TOTAL - 1) v_cnt <= 0; 
+            if (v_cnt == V_TOTAL - 1) v_cnt <= 0;
             else v_cnt <= v_cnt + 1;
         end else h_cnt <= h_cnt + 1;
     end
@@ -29,137 +28,72 @@ module vga_render(
     assign vga_vs = ~(v_cnt >= (V_ACTIVE + V_FP) && v_cnt < (V_ACTIVE + V_FP + V_SYNC));
     wire video_en = (h_cnt < H_ACTIVE) && (v_cnt < V_ACTIVE);
 
-    // --- 2. 坐标与位置参数 ---
-    localparam KEY_W = 30;
-    localparam START_X = 5;
-    localparam PIANO_WIDTH = 630; 
-
-    wire in_piano_x = (h_cnt >= START_X && h_cnt < (START_X + PIANO_WIDTH));
-    wire [4:0] current_key_idx = in_piano_x ? (h_cnt - START_X) / KEY_W : 5'd31;
+    // --- B. 键盘参数计算 (在 always 块外声明 wire) ---
+    localparam KEY_W = 30;    // 每个白键宽度
+    localparam START_X = 5;   // 整体左偏移
     
-    // 当前音符在键盘上的逻辑索引
-    wire [4:0] active_key_index = (octave_num >= 1 && display_num >= 1) ?
-                                  ((octave_num - 1) * 7 + (display_num - 1)) : 5'd31;
+    // 计算当前像素属于 21 个键中的第几个 (0-20)
+    wire [4:0] current_key_idx = (h_cnt >= START_X) ? (h_cnt - START_X) / KEY_W : 5'd31;
+    // 将输入的音符转为 0-20 的索引位置
+    wire [4:0] active_key_index = (octave_num >= 1 && display_num >= 1) ? ((octave_num - 1) * 7 + (display_num - 1)) : 5'd31;
     
-    wire [9:0] rel_x = in_piano_x ? (h_cnt - START_X) : 10'd0;
-    wire [7:0] x_in_octave = rel_x % (KEY_W * 7);
+    // 用于黑键判断的坐标
+    wire [9:0] rel_x = (h_cnt >= START_X) ? (h_cnt - START_X) : 10'd0;
+    wire [7:0] x_in_octave = rel_x % (KEY_W * 7); // 每个八度周期 210 像素
 
-    // --- 3. 跨时钟域触发同步 (增强版) ---
-    reg t_sync_0, t_sync_1, t_sync_2;
-    reg [3:0] d_num_sync, d_num_last;
+    // --- C. UI 渲染逻辑 ---
+    parameter BG_COLOR    = 12'h112; 
+    parameter KEY_WHITE   = 12'hEEE; 
+    parameter KEY_ACTIVE  = 12'h0DF; 
+    parameter BORDER      = 12'h444; 
 
-    always @(posedge vga_vs) begin
-        // 信号翻转同步
-        t_sync_0 <= note_trigger_toggle;
-        t_sync_1 <= t_sync_0;
-        t_sync_2 <= t_sync_1;
-        
-        // 音符数值同步
-        d_num_sync <= display_num;
-        d_num_last <= d_num_sync;
-    end
-    
-    // 触发逻辑：
-    // 1. 翻转电平改变 (主要用于自动模式)
-    // 2. 音符从0变为非0 (用于补漏，防止首个翻转丢失)
-    wire press_trigger = (t_sync_1 ^ t_sync_2) || (d_num_sync != 0 && d_num_last == 0);
-
-    // --- 4. 瀑布流逻辑 ---
-    localparam MAX_EFF = 12;
-    localparam EFF_HEIGHT = 60;
-    reg [9:0] eff_y [0:MAX_EFF-1];
-    reg [4:0] eff_x [0:MAX_EFF-1];
-    reg [MAX_EFF-1:0] eff_active = 0;
-
-    integer i;
-    always @(posedge vga_vs) begin
-        // 音符块移动逻辑
-        for (i = 0; i < MAX_EFF; i = i + 1) begin
-            if (eff_active[i]) begin
-                if (eff_y[i] <= 10'd45) 
-                    eff_active[i] <= 1'b0;
-                else 
-                    eff_y[i] <= eff_y[i] - 10'd4;
-            end
-        end
-        
-        // 新音符入队逻辑
-        if (press_trigger && active_key_index != 5'd31) begin
-            casex (eff_active)
-                12'bxxxx_xxxx_xxx0: begin eff_active[0] <= 1; eff_x[0] <= active_key_index; eff_y[0] <= 10'd300; end
-                12'bxxxx_xxxx_xx01: begin eff_active[1] <= 1; eff_x[1] <= active_key_index; eff_y[1] <= 10'd300; end
-                12'bxxxx_xxxx_x011: begin eff_active[2] <= 1; eff_x[2] <= active_key_index; eff_y[2] <= 10'd300; end
-                12'bxxxx_xxxx_0111: begin eff_active[3] <= 1; eff_x[3] <= active_key_index; eff_y[3] <= 10'd300; end
-                12'bxxxx_xxx0_1111: begin eff_active[4] <= 1; eff_x[4] <= active_key_index; eff_y[4] <= 10'd300; end
-                12'bxxxx_xx01_1111: begin eff_active[5] <= 1; eff_x[5] <= active_key_index; eff_y[5] <= 10'd300; end
-                12'bxxxx_x011_1111: begin eff_active[6] <= 1; eff_x[6] <= active_key_index; eff_y[6] <= 10'd300; end
-                12'bxxxx_0111_1111: begin eff_active[7] <= 1; eff_x[7] <= active_key_index; eff_y[7] <= 10'd300; end
-                12'bxxx0_1111_1111: begin eff_active[8] <= 1; eff_x[8] <= active_key_index; eff_y[8] <= 10'd300; end
-                12'bxx01_1111_1111: begin eff_active[9] <= 1; eff_x[9] <= active_key_index; eff_y[9] <= 10'd300; end
-                12'bx011_1111_1111: begin eff_active[10] <= 1; eff_x[10] <= active_key_index; eff_y[10] <= 10'd300; end
-                12'b0111_1111_1111: begin eff_active[11] <= 1; eff_x[11] <= active_key_index; eff_y[11] <= 10'd300; end
-                default: ; 
-            endcase
-        end
-    end
-
-    // --- 5. 渲染逻辑 ---
-    wire is_black_key = (v_cnt >= 300 && v_cnt < 410) && in_piano_x && (
-        (x_in_octave >= 22  && x_in_octave <= 38)  || 
-        (x_in_octave >= 52  && x_in_octave <= 68)  || 
-        (x_in_octave >= 112 && x_in_octave <= 128) || 
-        (x_in_octave >= 142 && x_in_octave <= 158) || 
-        (x_in_octave >= 172 && x_in_octave <= 188)
-    );
-
-    reg in_effect;
-    integer j;
-    always @(*) begin
-        in_effect = 1'b0;
-        if (in_piano_x && v_cnt >= 50 && v_cnt < 300) begin
-            for (j = 0; j < MAX_EFF; j = j + 1) begin
-                if (eff_active[j] && (current_key_idx == eff_x[j]) && 
-                    (v_cnt >= eff_y[j]) && (v_cnt < eff_y[j] + EFF_HEIGHT))
-                    in_effect = 1'b1;
-            end
-        end
-    end
-
-    // 最终色彩分配
     always @(*) begin
         if (!video_en) begin
             {vga_r, vga_g, vga_b} = 12'h000;
         end else begin
+            // 默认背景色
+            {vga_r, vga_g, vga_b} = BG_COLOR; 
+
+            // 1. 顶部状态栏 (0-50像素)
             if (v_cnt < 50) begin
-                {vga_r, vga_g, vga_b} = sw1 ? 12'h0A5 : 12'h555;
-            end 
-            else if (v_cnt >= 50 && v_cnt < 300) begin
-                if (in_effect)
-                    {vga_r, vga_g, vga_b} = {4'hF, 4'hC, v_cnt[7:4]}; // 特效方块
-                else
-                    {vga_r, vga_g, vga_b} = 12'h112; // 特效区背景
+                if (sw1) {vga_r, vga_g, vga_b} = 12'h0A5; 
+                else {vga_r, vga_g, vga_b} = 12'h555;     
             end
-            else if (v_cnt >= 300 && v_cnt < 475) begin
-                if (in_piano_x) begin
-                    if (is_black_key) 
-                        {vga_r, vga_g, vga_b} = 12'h000;
-                    else if (rel_x % KEY_W == 0)
-                        {vga_r, vga_g, vga_b} = 12'h444;
-                    else if (display_num != 0 && current_key_idx == active_key_index) begin
-                        case(octave_num)
-                            4'd1: {vga_r, vga_g, vga_b} = 12'hF50;
-                            4'd2: {vga_r, vga_g, vga_b} = 12'h0DF; 
-                            4'd3: {vga_r, vga_g, vga_b} = 12'hA5F;
-                            default: {vga_r, vga_g, vga_b} = 12'h0DF;
-                        endcase
-                    end else 
-                        {vga_r, vga_g, vga_b} = 12'hEEE;
-                end else
-                    {vga_r, vga_g, vga_b} = 12'h112;
-            end else begin
-                {vga_r, vga_g, vga_b} = 12'h112;
+            
+            // 2. 钢琴键盘区 (300-470像素)
+            else if (v_cnt >= 300 && v_cnt < 470) begin
+                if (h_cnt >= START_X && h_cnt < (START_X + 630)) begin
+                    
+                    // --- 优先判断黑键 (叠加在白键上层) ---
+                    // 黑键高度较短 (300-410)，逻辑不再依赖 current_key_idx 以防断裂
+                    if (v_cnt < 410 && (
+                        (x_in_octave >= 22  && x_in_octave <= 38)  || // 1-2 键缝隙
+                        (x_in_octave >= 52  && x_in_octave <= 68)  || // 2-3 键缝隙
+                        (x_in_octave >= 112 && x_in_octave <= 128) || // 4-5 键缝隙
+                        (x_in_octave >= 142 && x_in_octave <= 158) || // 5-6 键缝隙
+                        (x_in_octave >= 172 && x_in_octave <= 188)    // 6-7 键缝隙
+                    )) begin
+                        {vga_r, vga_g, vga_b} = 12'h000; 
+                    end
+                    
+                    // --- 绘制白键 (底层) ---
+                    else begin
+                        if (rel_x % KEY_W == 0) begin
+                            {vga_r, vga_g, vga_b} = BORDER; 
+                        end else if (display_num != 0 && current_key_idx == active_key_index) begin
+                            // 根据音程显示不同高亮颜色
+                            case(octave_num)
+                                4'd1: {vga_r, vga_g, vga_b} = 12'hF50; // 低音橙色
+                                4'd2: {vga_r, vga_g, vga_b} = 12'h0DF; // 中音青色
+                                4'd3: {vga_r, vga_g, vga_b} = 12'hA5F; // 高音紫色
+                                default: {vga_r, vga_g, vga_b} = KEY_ACTIVE;
+                            endcase
+                        end else begin
+                            {vga_r, vga_g, vga_b} = KEY_WHITE;
+                        end
+                    end
+                end
             end
         end
     end
-
 endmodule

@@ -29,7 +29,10 @@ set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property ip_output_repo e:/digital_logic/Top_Piano/Top_Piano.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
-read_verilog -library xil_defaultlib E:/digital_logic/Top_Piano/Top_Piano.srcs/sources_1/new/Top_Piano.v
+read_verilog -library xil_defaultlib {
+  E:/digital_logic/Top_Piano/Top_Piano.srcs/sources_1/new/vga_render.v
+  E:/digital_logic/Top_Piano/Top_Piano.srcs/sources_1/new/Top_Piano.v
+}
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
 # design are intentionally left as such for best results. Dcp files will be

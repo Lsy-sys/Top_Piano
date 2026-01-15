@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date         : Wed Jan 14 10:12:51 2026
+| Date         : Thu Jan 15 10:14:06 2026
 | Host         : ximao running 64-bit major release  (build 9200)
 | Command      : report_methodology -file Top_Piano_methodology_drc_routed.rpt -pb Top_Piano_methodology_drc_routed.pb -rpx Top_Piano_methodology_drc_routed.rpx
 | Design       : Top_Piano
@@ -23,11 +23,11 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 174
+             Violations found: 196
 +-----------+----------+-----------------------------+------------+
 | Rule      | Severity | Description                 | Violations |
 +-----------+----------+-----------------------------+------------+
-| TIMING-17 | Warning  | Non-clocked sequential cell | 174        |
+| TIMING-17 | Warning  | Non-clocked sequential cell | 196        |
 +-----------+----------+-----------------------------+------------+
 
 2. REPORT DETAILS
@@ -900,6 +900,116 @@ Related violations: <none>
 TIMING-17#174 Warning
 Non-clocked sequential cell  
 The clock pin timeout_cnt_reg[9]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#175 Warning
+Non-clocked sequential cell  
+The clock pin u_vga_inst/clk_div_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#176 Warning
+Non-clocked sequential cell  
+The clock pin u_vga_inst/clk_div_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#177 Warning
+Non-clocked sequential cell  
+The clock pin u_vga_inst/h_cnt_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#178 Warning
+Non-clocked sequential cell  
+The clock pin u_vga_inst/h_cnt_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#179 Warning
+Non-clocked sequential cell  
+The clock pin u_vga_inst/h_cnt_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#180 Warning
+Non-clocked sequential cell  
+The clock pin u_vga_inst/h_cnt_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#181 Warning
+Non-clocked sequential cell  
+The clock pin u_vga_inst/h_cnt_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#182 Warning
+Non-clocked sequential cell  
+The clock pin u_vga_inst/h_cnt_reg[5]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#183 Warning
+Non-clocked sequential cell  
+The clock pin u_vga_inst/h_cnt_reg[6]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#184 Warning
+Non-clocked sequential cell  
+The clock pin u_vga_inst/h_cnt_reg[7]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#185 Warning
+Non-clocked sequential cell  
+The clock pin u_vga_inst/h_cnt_reg[8]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#186 Warning
+Non-clocked sequential cell  
+The clock pin u_vga_inst/h_cnt_reg[9]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#187 Warning
+Non-clocked sequential cell  
+The clock pin u_vga_inst/v_cnt_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#188 Warning
+Non-clocked sequential cell  
+The clock pin u_vga_inst/v_cnt_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#189 Warning
+Non-clocked sequential cell  
+The clock pin u_vga_inst/v_cnt_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#190 Warning
+Non-clocked sequential cell  
+The clock pin u_vga_inst/v_cnt_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#191 Warning
+Non-clocked sequential cell  
+The clock pin u_vga_inst/v_cnt_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#192 Warning
+Non-clocked sequential cell  
+The clock pin u_vga_inst/v_cnt_reg[5]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#193 Warning
+Non-clocked sequential cell  
+The clock pin u_vga_inst/v_cnt_reg[6]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#194 Warning
+Non-clocked sequential cell  
+The clock pin u_vga_inst/v_cnt_reg[7]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#195 Warning
+Non-clocked sequential cell  
+The clock pin u_vga_inst/v_cnt_reg[8]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#196 Warning
+Non-clocked sequential cell  
+The clock pin u_vga_inst/v_cnt_reg[9]/C is not reached by a timing clock
 Related violations: <none>
 
 

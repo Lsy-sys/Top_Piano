@@ -4,10 +4,16 @@ module Top_Piano(
     input ps2_data,      
     input sw0,            // 总开关
     input sw1,            // 自动模式开关
-    input sw2,            // 音色切换：1-正弦波, 0-方波
-    input btn_s4,         // 播放歌曲1
-    input btn_r11,        // 播放歌曲2
+    input sw2,            // 音色切换
+    input btn_s4,         // 小星星
+    input btn_r11,        // 传邮万里
+    input btn_r17,        //恭喜发财
     output audio_pwm,   
+    output [3:0] vga_r,
+    output [3:0] vga_g,
+    output [3:0] vga_b,
+    output vga_hs,
+    output vga_vs,
     output audio_sd,     
     output [7:0] seg0,   
     output [7:0] seg1,   
@@ -41,13 +47,14 @@ module Top_Piano(
     always @(posedge clk) sw1_reg <= sw1;
     wire mode_change_reset = (sw1 ^ sw1_reg);
 
-    // --- 2. 自动播放与节拍控制 (保留完整逻辑) ---
+    // --- 2. 自动播放与节拍控制 ---
     always @(posedge clk) begin
         if (!sw0 || !sw1 || mode_change_reset) begin
             play_en <= 1'b0; song_select <= 2'd0; beat_cnt <= 0; score_ptr <= 0;
         end else begin
             if (btn_s4) begin play_en <= 1'b1; song_select <= 2'd1; beat_cnt <= 0; score_ptr <= 0; end
             else if (btn_r11) begin play_en <= 1'b1; song_select <= 2'd2; beat_cnt <= 0; score_ptr <= 0; end
+            else if (btn_r17) begin play_en <= 1'b1; song_select <= 2'd3; beat_cnt <= 0; score_ptr <= 0; end
             else if (play_en) begin
                 if (beat_cnt >= 25_000_000) begin beat_cnt <= 0; score_ptr <= score_ptr + 1; end
                 else beat_cnt <= beat_cnt + 1;
@@ -86,7 +93,7 @@ module Top_Piano(
         end
     end
 
-    // --- 4. 乐谱内容定义 (完整保留) ---
+    // --- 4. 乐谱  ---
     parameter NO=8'h00;
     parameter L5=8'h2E, L6=8'h36, L7=8'h3D; 
     parameter K1=8'h15, K2=8'h1D, K3=8'h24, K4=8'h2D, K5=8'h2C, K6=8'h35, K7=8'h3C;
@@ -114,10 +121,36 @@ module Top_Piano(
                 29: auto_key_code = L6; 30,31,32,33: auto_key_code = K4; 34: auto_key_code = K5; 35: auto_key_code = L6; 36: auto_key_code = K5; 37: auto_key_code = K2; 38: auto_key_code = NO;
                 default: auto_key_code = NO;
             endcase
+         
         end
+if (song_select == 2'd3) begin
+    case(score_ptr)
+        0,1:   auto_key_code = K1;  2,3:   auto_key_code = K2;
+        4,5:   auto_key_code = K3;  6,7:   auto_key_code = K1;
+
+        8,9:   auto_key_code = K1;  10,11: auto_key_code = K2;
+        12,13: auto_key_code = K3;  14,15: auto_key_code = K1;
+
+        16,17: auto_key_code = K3;  18,19: auto_key_code = K4;
+        20,21,22,23: auto_key_code = K5; 
+
+        24,25: auto_key_code = K3;  26,27: auto_key_code = K4;
+        28,29,30,31: auto_key_code = K5;
+
+        32:    auto_key_code = K5;  33:    auto_key_code = K6;
+        34:    auto_key_code = K5;  35:    auto_key_code = K4;
+        36,37: auto_key_code = K3;  38,39: auto_key_code = K1;
+
+        40:    auto_key_code = K5;  41:    auto_key_code = K6;
+        42:    auto_key_code = K5;  43:    auto_key_code = K4;
+        44,45: auto_key_code = K3;  46,47: auto_key_code = K1;
+
+        default: auto_key_code = NO;
+    endcase
+end
     end
 
-    // --- 5. 频率控制与查找表 (整合完整映射) ---
+    // --- 5. 频率控制与查找表 ---
     wire [7:0] current_key = (sw1) ? (play_en ? auto_key_code : 8'h00) : key_code;
     wire       current_valid = (mode_change_reset) ? 1'b0 : ((sw1) ? (play_en && beat_cnt == 25'd1) : key_valid);
 
@@ -179,7 +212,7 @@ module Top_Piano(
         else sq_cnt <= sq_cnt + 1;
     end
 
-    // (C) 正弦波逻辑 (DDS)
+    // (C) 正弦波逻辑 
     reg [7:0]  sine_ptr = 0;
     reg [17:0] sine_acc = 0;
     always @(posedge clk) begin
@@ -203,7 +236,7 @@ module Top_Piano(
     wire auto_mute = (sw1 && play_en && beat_cnt > 20_000_000);
     assign audio_pwm = final_wave & sw0 & !auto_mute & !mode_change_reset;
 
-    // --- 8. 数码管译码 (完整保留) ---
+    // --- 8. 数码管译码 ---
     function [7:0] decode(input [3:0] n);
         case(n)
             1: decode = 8'h06; 2: decode = 8'h5B; 3: decode = 8'h4F;
@@ -215,5 +248,18 @@ module Top_Piano(
     assign seg0 = (sw0) ? decode(display_num) : 8'h00;
     assign seg1 = (sw0) ? decode(octave_num) : 8'h00;
     assign seg_en = (display_num != 4'h0 && sw0) ? 8'b00011000 : 8'b00000000;
-
+    
+    
+    vga_render u_vga_inst (
+        .clk_100m(clk),             // 接入 P17 时钟 
+        .display_num(display_num),   // 接入内部 note 寄存器 [cite: 12]
+        .octave_num(octave_num),     // 接入内部音阶寄存器 [cite: 12]
+        .sw1(sw1),                  // 接入自动模式开关 
+        .vga_r(vga_r),
+        .vga_g(vga_g),
+        .vga_b(vga_b),
+        .vga_hs(vga_hs),
+        .vga_vs(vga_vs)
+    );
 endmodule
+
