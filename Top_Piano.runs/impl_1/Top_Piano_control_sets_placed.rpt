@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date         : Thu Jan 15 15:12:27 2026
+| Date         : Thu Jan 15 15:32:29 2026
 | Host         : ximao running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file Top_Piano_control_sets_placed.rpt
 | Design       : Top_Piano
@@ -23,8 +23,8 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Number of unique control sets                            |    46 |
-| Unused register locations in slices containing registers |   142 |
+| Number of unique control sets                            |    45 |
+| Unused register locations in slices containing registers |   206 |
 +----------------------------------------------------------+-------+
 
 
@@ -35,11 +35,11 @@ Table of Contents
 | Fanout | Control Sets |
 +--------+--------------+
 |      1 |            8 |
-|      4 |            3 |
+|      4 |            1 |
 |      5 |           12 |
 |      7 |            1 |
-|      8 |           12 |
-|     10 |            2 |
+|      8 |            1 |
+|     10 |           14 |
 |    16+ |            8 |
 +--------+--------------+
 
@@ -53,9 +53,9 @@ Table of Contents
 | No           | No                    | No                     |              54 |           33 |
 | No           | No                    | Yes                    |               0 |            0 |
 | No           | Yes                   | No                     |              64 |           17 |
-| Yes          | No                    | No                     |              86 |           36 |
+| Yes          | No                    | No                     |              86 |           35 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |             174 |           65 |
+| Yes          | Yes                   | No                     |             198 |           71 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -65,50 +65,49 @@ Table of Contents
 +---------------------+---------------------------------+---------------------------------+------------------+----------------+
 |     Clock Signal    |          Enable Signal          |         Set/Reset Signal        | Slice Load Count | Bel Load Count |
 +---------------------+---------------------------------+---------------------------------+------------------+----------------+
-|  clk_IBUF_BUFG      | ps2_buffer[8]_i_1_n_0           |                                 |                1 |              1 |
-|  clk_IBUF_BUFG      | ps2_buffer[1]_i_1_n_0           |                                 |                1 |              1 |
-|  clk_IBUF_BUFG      | ps2_buffer[4]_i_1_n_0           |                                 |                1 |              1 |
-|  clk_IBUF_BUFG      | ps2_buffer[3]_i_1_n_0           |                                 |                1 |              1 |
-|  clk_IBUF_BUFG      | ps2_buffer[6]_i_1_n_0           |                                 |                1 |              1 |
 |  clk_IBUF_BUFG      | ps2_buffer[2]_i_1_n_0           |                                 |                1 |              1 |
 |  clk_IBUF_BUFG      | ps2_buffer[7]_i_1_n_0           |                                 |                1 |              1 |
+|  clk_IBUF_BUFG      | ps2_buffer[8]_i_1_n_0           |                                 |                1 |              1 |
+|  clk_IBUF_BUFG      | ps2_buffer[3]_i_1_n_0           |                                 |                1 |              1 |
+|  clk_IBUF_BUFG      | ps2_buffer[1]_i_1_n_0           |                                 |                1 |              1 |
 |  clk_IBUF_BUFG      | ps2_buffer[5]_i_1_n_0           |                                 |                1 |              1 |
-|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[10][9]_i_2_n_0 | u_vga_inst/eff_y[10][8]_i_1_n_0 |                2 |              4 |
-|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[10][9]_i_2_n_0 | u_vga_inst/eff_y[10][9]_i_1_n_0 |                2 |              4 |
-|  clk_IBUF_BUFG      | ps2_fall                        | ps2_cnt[3]_i_1_n_0              |                2 |              4 |
-|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[11][9]_i_1_n_0 |                                 |                2 |              5 |
-|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_x[3][4]_i_1_n_0  |                                 |                2 |              5 |
-|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_x[10][4]_i_1_n_0 |                                 |                2 |              5 |
-|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_x[6][4]_i_1_n_0  |                                 |                2 |              5 |
-|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_x[9][4]_i_1_n_0  |                                 |                2 |              5 |
-|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_x[8][4]_i_1_n_0  |                                 |                2 |              5 |
-|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_x[7][4]_i_1_n_0  |                                 |                2 |              5 |
+|  clk_IBUF_BUFG      | ps2_buffer[6]_i_1_n_0           |                                 |                1 |              1 |
+|  clk_IBUF_BUFG      | ps2_buffer[4]_i_1_n_0           |                                 |                1 |              1 |
+|  clk_IBUF_BUFG      | ps2_fall                        | ps2_cnt[3]_i_1_n_0              |                1 |              4 |
+|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_x[6][4]_i_1_n_0  |                                 |                1 |              5 |
 |  vga_vs_OBUF_BUFG   | u_vga_inst/eff_x[0][4]_i_1_n_0  |                                 |                1 |              5 |
+|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[11][9]_i_1_n_0 |                                 |                2 |              5 |
 |  vga_vs_OBUF_BUFG   | u_vga_inst/eff_x[2][4]_i_1_n_0  |                                 |                1 |              5 |
-|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_x[1][4]_i_1_n_0  |                                 |                2 |              5 |
-|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[5][9]_i_1_n_0  |                                 |                1 |              5 |
+|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_x[3][4]_i_1_n_0  |                                 |                1 |              5 |
+|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_x[1][4]_i_1_n_0  |                                 |                1 |              5 |
+|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_x[8][4]_i_1_n_0  |                                 |                2 |              5 |
+|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_x[9][4]_i_1_n_0  |                                 |                1 |              5 |
+|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_x[10][4]_i_1_n_0 |                                 |                1 |              5 |
+|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_x[7][4]_i_1_n_0  |                                 |                2 |              5 |
+|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[5][9]_i_1_n_0  |                                 |                3 |              5 |
 |  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[4][9]_i_1_n_0  |                                 |                2 |              5 |
-|  clk_IBUF_BUFG      | beat_cnt0                       | score_ptr                       |                4 |              7 |
-|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[0][9]_i_2_n_0  | u_vga_inst/eff_y[0][9]_i_1_n_0  |                2 |              8 |
-|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[2][9]_i_2_n_0  | u_vga_inst/eff_y[2][9]_i_1_n_0  |                3 |              8 |
-|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[3][9]_i_2_n_0  | u_vga_inst/eff_y[3][9]_i_1_n_0  |                3 |              8 |
-|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[11][9]_i_2_n_0 | u_vga_inst/eff_y[11][9]_i_1_n_0 |                3 |              8 |
-|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[1][9]_i_2_n_0  | u_vga_inst/eff_y[1][9]_i_1_n_0  |                3 |              8 |
-|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[9][9]_i_2_n_0  | u_vga_inst/eff_y[9][9]_i_1_n_0  |                2 |              8 |
-|  clk_IBUF_BUFG      | key_code[7]_i_1_n_0             |                                 |                3 |              8 |
-|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[4][9]_i_2_n_0  | u_vga_inst/eff_y[4][9]_i_1_n_0  |                3 |              8 |
-|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[6][9]_i_2_n_0  | u_vga_inst/eff_y[6][9]_i_1_n_0  |                3 |              8 |
-|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[8][9]_i_2_n_0  | u_vga_inst/eff_y[8][9]_i_1_n_0  |                2 |              8 |
-|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[5][9]_i_2_n_0  | u_vga_inst/eff_y[5][9]_i_1_n_0  |                2 |              8 |
-|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[7][9]_i_2_n_0  | u_vga_inst/eff_y[7][9]_i_1_n_0  |                2 |              8 |
-|  u_vga_inst/pix_clk | u_vga_inst/v_cnt[9]_i_1_n_0     |                                 |                4 |             10 |
-|  u_vga_inst/pix_clk |                                 |                                 |                6 |             10 |
+|  clk_IBUF_BUFG      | beat_cnt0                       | score_ptr                       |                5 |              7 |
+|  clk_IBUF_BUFG      | key_code[7]_i_1_n_0             |                                 |                4 |              8 |
+|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[0][9]_i_2_n_0  | u_vga_inst/eff_y[0][9]_i_1_n_0  |                3 |             10 |
+|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[10][9]_i_2_n_0 | u_vga_inst/eff_y[10][9]_i_1_n_0 |                4 |             10 |
+|  u_vga_inst/pix_clk |                                 |                                 |                7 |             10 |
+|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[11][9]_i_2_n_0 | u_vga_inst/eff_y[11][9]_i_1_n_0 |                3 |             10 |
+|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[3][9]_i_2_n_0  | u_vga_inst/eff_y[3][9]_i_1_n_0  |                3 |             10 |
+|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[4][9]_i_2_n_0  | u_vga_inst/eff_y[4][9]_i_1_n_0  |                4 |             10 |
+|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[2][9]_i_2_n_0  | u_vga_inst/eff_y[2][9]_i_1_n_0  |                3 |             10 |
+|  u_vga_inst/pix_clk | u_vga_inst/v_cnt[9]_i_1_n_0     |                                 |                5 |             10 |
+|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[5][9]_i_2_n_0  | u_vga_inst/eff_y[5][9]_i_1_n_0  |                3 |             10 |
+|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[1][9]_i_2_n_0  | u_vga_inst/eff_y[1][9]_i_1_n_0  |                4 |             10 |
+|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[8][9]_i_2_n_0  | u_vga_inst/eff_y[8][9]_i_1_n_0  |                4 |             10 |
+|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[9][9]_i_2_n_0  | u_vga_inst/eff_y[9][9]_i_1_n_0  |                3 |             10 |
+|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[6][9]_i_2_n_0  | u_vga_inst/eff_y[6][9]_i_1_n_0  |                2 |             10 |
+|  vga_vs_OBUF_BUFG   | u_vga_inst/eff_y[7][9]_i_2_n_0  | u_vga_inst/eff_y[7][9]_i_1_n_0  |                2 |             10 |
 |  clk_IBUF_BUFG      | sel                             | sq_wave                         |                5 |             16 |
-|  clk_IBUF_BUFG      |                                 | sine_acc                        |                5 |             18 |
 |  clk_IBUF_BUFG      |                                 | sq_cnt                          |                5 |             18 |
+|  clk_IBUF_BUFG      |                                 | sine_acc                        |                5 |             18 |
 |  clk_IBUF_BUFG      | timeout_cnt[0]_i_2_n_0          | timeout_cnt[0]_i_1_n_0          |                5 |             20 |
-|  vga_vs_OBUF_BUFG   |                                 |                                 |               18 |             21 |
-|  clk_IBUF_BUFG      |                                 |                                 |                9 |             23 |
+|  vga_vs_OBUF_BUFG   |                                 |                                 |               15 |             21 |
+|  clk_IBUF_BUFG      |                                 |                                 |               11 |             23 |
 |  clk_IBUF_BUFG      |                                 | beat_cnt                        |                7 |             28 |
 |  clk_IBUF_BUFG      | playing_key[7]_i_2_n_0          | playing_key                     |               17 |             31 |
 +---------------------+---------------------------------+---------------------------------+------------------+----------------+

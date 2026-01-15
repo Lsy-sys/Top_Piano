@@ -15,7 +15,7 @@ module vga_render(
 
     parameter H_ACTIVE = 640, H_FP = 16, H_SYNC = 96, H_BP = 48, H_TOTAL = 800;
     parameter V_ACTIVE = 480, V_FP = 10, V_SYNC = 2,  V_BP = 33, V_TOTAL = 525;
-
+    
     reg [9:0] h_cnt = 0, v_cnt = 0;
     always @(posedge pix_clk) begin
         if (h_cnt == H_TOTAL - 1) begin
@@ -32,36 +32,28 @@ module vga_render(
     // --- 2. 坐标与位置参数 ---
     localparam KEY_W = 30;
     localparam START_X = 5;
-    localparam PIANO_WIDTH = 630; 
-
+    localparam PIANO_WIDTH = 630;
+    
     wire in_piano_x = (h_cnt >= START_X && h_cnt < (START_X + PIANO_WIDTH));
     wire [4:0] current_key_idx = in_piano_x ? (h_cnt - START_X) / KEY_W : 5'd31;
     
-    // 当前音符在键盘上的逻辑索引
     wire [4:0] active_key_index = (octave_num >= 1 && display_num >= 1) ?
                                   ((octave_num - 1) * 7 + (display_num - 1)) : 5'd31;
     
     wire [9:0] rel_x = in_piano_x ? (h_cnt - START_X) : 10'd0;
     wire [7:0] x_in_octave = rel_x % (KEY_W * 7);
 
-    // --- 3. 跨时钟域触发同步 (增强版) ---
+    // --- 3. 跨时钟域触发同步 ---
     reg t_sync_0, t_sync_1, t_sync_2;
     reg [3:0] d_num_sync, d_num_last;
-
     always @(posedge vga_vs) begin
-        // 信号翻转同步
         t_sync_0 <= note_trigger_toggle;
         t_sync_1 <= t_sync_0;
         t_sync_2 <= t_sync_1;
-        
-        // 音符数值同步
         d_num_sync <= display_num;
         d_num_last <= d_num_sync;
     end
     
-    // 触发逻辑：
-    // 1. 翻转电平改变 (主要用于自动模式)
-    // 2. 音符从0变为非0 (用于补漏，防止首个翻转丢失)
     wire press_trigger = (t_sync_1 ^ t_sync_2) || (d_num_sync != 0 && d_num_last == 0);
 
     // --- 4. 瀑布流逻辑 ---
@@ -79,7 +71,8 @@ module vga_render(
                 if (eff_y[i] <= 10'd45) 
                     eff_active[i] <= 1'b0;
                 else 
-                    eff_y[i] <= eff_y[i] - 10'd4;
+                    // 【速度优化】：下落量从 4 减为 3
+                    eff_y[i] <= eff_y[i] - 10'd3; 
             end
         end
         
@@ -96,9 +89,9 @@ module vga_render(
                 12'bxxxx_0111_1111: begin eff_active[7] <= 1; eff_x[7] <= active_key_index; eff_y[7] <= 10'd300; end
                 12'bxxx0_1111_1111: begin eff_active[8] <= 1; eff_x[8] <= active_key_index; eff_y[8] <= 10'd300; end
                 12'bxx01_1111_1111: begin eff_active[9] <= 1; eff_x[9] <= active_key_index; eff_y[9] <= 10'd300; end
-                12'bx011_1111_1111: begin eff_active[10] <= 1; eff_x[10] <= active_key_index; eff_y[10] <= 10'd300; end
-                12'b0111_1111_1111: begin eff_active[11] <= 1; eff_x[11] <= active_key_index; eff_y[11] <= 10'd300; end
-                default: ; 
+                12'bx011_1111_1111: begin eff_active[10]<= 1; eff_x[10]<= active_key_index; eff_y[10]<= 10'd300; end
+                12'b0111_1111_1111: begin eff_active[11]<= 1; eff_x[11]<= active_key_index; eff_y[11]<= 10'd300; end
+                default: ;
             endcase
         end
     end
@@ -120,7 +113,7 @@ module vga_render(
             for (j = 0; j < MAX_EFF; j = j + 1) begin
                 if (eff_active[j] && (current_key_idx == eff_x[j]) && 
                     (v_cnt >= eff_y[j]) && (v_cnt < eff_y[j] + EFF_HEIGHT))
-                    in_effect = 1'b1;
+                     in_effect = 1'b1;
             end
         end
     end
@@ -135,9 +128,13 @@ module vga_render(
             end 
             else if (v_cnt >= 50 && v_cnt < 300) begin
                 if (in_effect)
-                    {vga_r, vga_g, vga_b} = {4'hF, 4'hC, v_cnt[7:4]}; // 特效方块
+                    // 【色彩优化】：暖色调（红-橙-金渐变）
+                    // 1. R 固定为 F (最大红色)
+                    // 2. G 使用 v_cnt[8:5] 确保平滑，不发生突变。由于 B 被置 0，只会产生红橙黄色系
+                    // 3. B 固定为 0，彻底移除粉紫色
+                    {vga_r, vga_g, vga_b} = {4'hF, v_cnt[8:5] + 4'd2, 4'h0};
                 else
-                    {vga_r, vga_g, vga_b} = 12'h112; // 特效区背景
+                    {vga_r, vga_g, vga_b} = 12'h112;
             end
             else if (v_cnt >= 300 && v_cnt < 475) begin
                 if (in_piano_x) begin
