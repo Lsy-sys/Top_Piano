@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date             : Thu Jan 15 10:48:27 2026
+| Date             : Thu Jan 15 10:54:14 2026
 | Host             : ximao running 64-bit major release  (build 9200)
 | Command          : report_power -file Top_Piano_power_routed.rpt -pb Top_Piano_power_summary_routed.pb -rpx Top_Piano_power_routed.rpx
 | Design           : Top_Piano
@@ -29,20 +29,20 @@ Table of Contents
 1. Summary
 ----------
 
-+--------------------------+--------------+
-| Total On-Chip Power (W)  | 10.341       |
-| Design Power Budget (W)  | Unspecified* |
-| Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 10.203       |
-| Device Static (W)        | 0.138        |
-| Effective TJA (C/W)      | 4.8          |
-| Max Ambient (C)          | 35.6         |
-| Junction Temperature (C) | 74.4         |
-| Confidence Level         | Low          |
-| Setting File             | ---          |
-| Simulation Activity File | ---          |
-| Design Nets Matched      | NA           |
-+--------------------------+--------------+
++--------------------------+----------------------------------+
+| Total On-Chip Power (W)  | 14.120 (Junction temp exceeded!) |
+| Design Power Budget (W)  | Unspecified*                     |
+| Power Budget Margin (W)  | NA                               |
+| Dynamic (W)              | 13.908                           |
+| Device Static (W)        | 0.211                            |
+| Effective TJA (C/W)      | 4.8                              |
+| Max Ambient (C)          | 17.5                             |
+| Junction Temperature (C) | 92.5                             |
+| Confidence Level         | Low                              |
+| Setting File             | ---                              |
+| Simulation Activity File | ---                              |
+| Design Nets Matched      | NA                               |
++--------------------------+----------------------------------+
 * Specify Design Power Budget using, set_operating_conditions -design_power_budget <value in Watts>
 
 
@@ -52,17 +52,17 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Slice Logic    |     3.072 |     1548 |       --- |             --- |
-|   LUT as Logic |     2.888 |      743 |     20800 |            3.57 |
-|   CARRY4       |     0.136 |      105 |      8150 |            1.29 |
-|   Register     |     0.042 |      370 |     41600 |            0.89 |
+| Slice Logic    |     3.563 |     1558 |       --- |             --- |
+|   LUT as Logic |     3.367 |      757 |     20800 |            3.64 |
+|   CARRY4       |     0.147 |      105 |      8150 |            1.29 |
+|   Register     |     0.043 |      370 |     41600 |            0.89 |
 |   BUFG         |     0.006 |        2 |        32 |            6.25 |
 |   F7/F8 Muxes  |    <0.001 |        1 |     32600 |           <0.01 |
 |   Others       |     0.000 |        4 |       --- |             --- |
-| Signals        |     2.144 |      956 |       --- |             --- |
-| I/O            |     4.986 |       49 |       210 |           23.33 |
-| Static Power   |     0.138 |          |           |                 |
-| Total          |    10.341 |          |           |                 |
+| Signals        |     2.452 |      974 |       --- |             --- |
+| I/O            |     7.893 |       49 |       210 |           23.33 |
+| Static Power   |     0.211 |          |           |                 |
+| Total          |    14.120 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -72,16 +72,16 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     5.316 |       5.252 |      0.064 |
-| Vccaux    |       1.800 |     0.200 |       0.181 |      0.019 |
-| Vcco33    |       3.300 |     1.402 |       1.401 |      0.001 |
+| Vccint    |       1.000 |     6.174 |       6.051 |      0.122 |
+| Vccaux    |       1.800 |     0.314 |       0.288 |      0.026 |
+| Vcco33    |       3.300 |     2.225 |       2.224 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |
 | Vccaux_io |       1.800 |     0.000 |       0.000 |      0.000 |
-| Vccbram   |       1.000 |     0.001 |       0.000 |      0.001 |
+| Vccbram   |       1.000 |     0.003 |       0.000 |      0.003 |
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |
 | Vccadc    |       1.800 |     0.020 |       0.000 |      0.020 |
@@ -139,8 +139,8 @@ Table of Contents
 +--------------+-----------+
 | Name         | Power (W) |
 +--------------+-----------+
-| Top_Piano    |    10.203 |
-|   u_vga_inst |     4.366 |
+| Top_Piano    |    13.908 |
+|   u_vga_inst |     5.156 |
 +--------------+-----------+
 
 

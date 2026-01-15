@@ -28,7 +28,7 @@ module vga_render(
     assign vga_vs = ~(v_cnt >= (V_ACTIVE + V_FP) && v_cnt < (V_ACTIVE + V_FP + V_SYNC));
     wire video_en = (h_cnt < H_ACTIVE) && (v_cnt < V_ACTIVE);
 
-    // --- B. 键盘位置计算 ---
+    // --- B. 位置参数 ---
     localparam KEY_W = 30;
     localparam START_X = 5;
     wire [4:0] current_key_idx = (h_cnt >= START_X) ? (h_cnt - START_X) / KEY_W : 5'd31;
@@ -36,44 +36,34 @@ module vga_render(
     wire [9:0] rel_x = (h_cnt >= START_X) ? (h_cnt - START_X) : 10'd0;
     wire [7:0] x_in_octave = rel_x % (KEY_W * 7);
 
-    // --- C. 瀑布流特效核心逻辑 ---
+    // --- C. 特效逻辑 (保持之前的稳定分配版) ---
     localparam MAX_EFF = 12;        
-    localparam EFF_HEIGHT = 50;     
+    localparam EFF_HEIGHT = 60;     
     reg [9:0] eff_y [0:MAX_EFF-1];  
     reg [4:0] eff_x [0:MAX_EFF-1];  
     reg [MAX_EFF-1:0] eff_active = 0; 
     
-    // 信号同步处理
     reg [3:0] note_q1, note_q2;
     always @(posedge vga_vs) begin
         note_q1 <= display_num;
         note_q2 <= note_q1;
     end
-    
-    // 边缘检测触发
     wire press_trigger = (note_q1 != 4'd0 && note_q1 != note_q2);
 
     integer i;
     always @(posedge vga_vs) begin
-        // 1. 移动与边界销毁逻辑 (只处理已经激活的)
         for (i = 0; i < MAX_EFF; i = i + 1) begin
             if (eff_active[i]) begin
-                if (eff_y[i] <= 10'd51) begin 
-                    eff_active[i] <= 1'b0; // 彻底释放槽位
-                end else begin
-                    eff_y[i] <= eff_y[i] - 10'd4; // 匀速上升
-                end
+                if (eff_y[i] <= 10'd51) eff_active[i] <= 1'b0;
+                else eff_y[i] <= eff_y[i] - 10'd4;
             end
         end
-
-        // 2. 动态分配逻辑 (带有 eff_active 检查，防止重写)
         if (press_trigger) begin
-            // 使用阻塞标志或级联判断，确保只分配一个空槽位
             case(1'b0)
                 eff_active[0]:  begin eff_active[0] <= 1; eff_x[0] <= active_key_index; eff_y[0] <= 10'd300; end
                 eff_active[1]:  begin eff_active[1] <= 1; eff_x[1] <= active_key_index; eff_y[1] <= 10'd300; end
                 eff_active[2]:  begin eff_active[2] <= 1; eff_x[2] <= active_key_index; eff_y[2] <= 10'd300; end
-                eff_active[3]:  begin eff_active[3] <= 1; eff_active[3] <= 1; eff_x[3] <= active_key_index; eff_y[3] <= 10'd300; end
+                eff_active[3]:  begin eff_active[3] <= 1; eff_x[3] <= active_key_index; eff_y[3] <= 10'd300; end
                 eff_active[4]:  begin eff_active[4] <= 1; eff_x[4] <= active_key_index; eff_y[4] <= 10'd300; end
                 eff_active[5]:  begin eff_active[5] <= 1; eff_x[5] <= active_key_index; eff_y[5] <= 10'd300; end
                 eff_active[6]:  begin eff_active[6] <= 1; eff_x[6] <= active_key_index; eff_y[6] <= 10'd300; end
@@ -82,61 +72,66 @@ module vga_render(
                 eff_active[9]:  begin eff_active[9] <= 1; eff_x[9] <= active_key_index; eff_y[9] <= 10'd300; end
                 eff_active[10]: begin eff_active[10] <= 1; eff_x[10] <= active_key_index; eff_y[10] <= 10'd300; end
                 eff_active[11]: begin eff_active[11] <= 1; eff_x[11] <= active_key_index; eff_y[11] <= 10'd300; end
-                default: ; // 槽位满则不操作
+                default: ; 
             endcase
         end
     end
 
-    // --- D. UI 渲染逻辑 (纯组合逻辑) ---
-    reg [11:0] current_rgb;
-    reg is_pixel_in_eff;
+    // --- D. 渲染逻辑 (修复黑杠问题) ---
+    reg [11:0] pix_data;
+    wire is_black_key = (v_cnt >= 300 && v_cnt < 410) && (
+        (x_in_octave >= 22  && x_in_octave <= 38)  || 
+        (x_in_octave >= 52  && x_in_octave <= 68)  || 
+        (x_in_octave >= 112 && x_in_octave <= 128) || 
+        (x_in_octave >= 142 && x_in_octave <= 158) || 
+        (x_in_octave >= 172 && x_in_octave <= 188)
+    );
 
     always @(*) begin
-        is_pixel_in_eff = 1'b0;
-        current_rgb = 12'h112; // 背景色
+        pix_data = 12'h112; // 默认深色背景
 
         if (!video_en) begin
-            current_rgb = 12'h000;
-        end else if (v_cnt < 50) begin
-            current_rgb = sw1 ? 12'h0A5 : 12'h555;
-        end else if (v_cnt >= 50 && v_cnt < 300) begin
-            // 扫描显示特效
-            for (i = 0; i < MAX_EFF; i = i + 1) begin
-                if (eff_active[i] && current_key_idx == eff_x[i] && 
-                    v_cnt >= eff_y[i] && v_cnt < (eff_y[i] + EFF_HEIGHT)) begin
-                    is_pixel_in_eff = 1'b1;
-                    current_rgb = {4'hF, 4'hD, v_cnt[7:4]}; // 橙色系特效
+            pix_data = 12'h000;
+        end else begin
+            // 1. 顶部状态栏
+            if (v_cnt < 50) begin
+                pix_data = sw1 ? 12'h0A5 : 12'h555;
+            end 
+            // 2. 钢琴区域渲染 (包括白键、高亮和黑键)
+            else if (v_cnt >= 300 && v_cnt < 475) begin
+                if (h_cnt >= START_X && h_cnt < (START_X + 630)) begin
+                    if (is_black_key) begin
+                        pix_data = 12'h000; // 黑键最高优先级，遮盖一切
+                    end else begin
+                        // 白键及高亮判断
+                        if (rel_x % KEY_W == 0) begin
+                            pix_data = 12'h444; // 琴键边框
+                        end else if (display_num != 0 && current_key_idx == active_key_index) begin
+                            case(octave_num)
+                                4'd1: pix_data = 12'hF50;
+                                4'd2: pix_data = 12'h0DF;
+                                4'd3: pix_data = 12'hA5F;
+                                default: pix_data = 12'h0DF;
+                            endcase
+                        end else begin
+                            pix_data = 12'hEEE; // 普通白键
+                        end
+                    end
                 end
             end
-            if (!is_pixel_in_eff) current_rgb = 12'h112;
-        end else if (v_cnt >= 300 && v_cnt < 470) begin
-            // 钢琴键渲染
-            if (h_cnt >= START_X && h_cnt < (START_X + 630)) begin
-                if (v_cnt < 410 && (
-                    (x_in_octave >= 22  && x_in_octave <= 38)  || 
-                    (x_in_octave >= 52  && x_in_octave <= 68)  || 
-                    (x_in_octave >= 112 && x_in_octave <= 128) || 
-                    (x_in_octave >= 142 && x_in_octave <= 158) || 
-                    (x_in_octave >= 172 && x_in_octave <= 188)    
-                )) begin
-                    current_rgb = 12'h000;
-                end else begin
-                    if (rel_x % KEY_W == 0) current_rgb = 12'h444;
-                    else if (display_num != 0 && current_key_idx == active_key_index) begin
-                        case(octave_num)
-                            4'd1:    current_rgb = 12'hF50;
-                            4'd2:    current_rgb = 12'h0DF;
-                            4'd3:    current_rgb = 12'hA5F;
-                            default: current_rgb = 12'h0DF;
-                        endcase
-                    end else current_rgb = 12'hEEE;
+            // 3. 瀑布流特效区域 (放在最后判断，但优先级低于黑键)
+            else if (v_cnt >= 50 && v_cnt < 300) begin
+                for (i = 0; i < MAX_EFF; i = i + 1) begin
+                    if (eff_active[i] && current_key_idx == eff_x[i] && 
+                        v_cnt >= eff_y[i] && v_cnt < (eff_y[i] + EFF_HEIGHT)) begin
+                        pix_data = {4'hF, 4'hC, v_cnt[7:4]}; 
+                    end
                 end
             end
         end
-        // 最终输出赋值
-        vga_r = current_rgb[11:8];
-        vga_g = current_rgb[7:4];
-        vga_b = current_rgb[3:0];
+        // 最终输出
+        vga_r = pix_data[11:8];
+        vga_g = pix_data[7:4];
+        vga_b = pix_data[3:0];
     end
-
 endmodule
