@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date         : Thu Jan 15 14:18:38 2026
+| Date         : Thu Jan 15 14:38:50 2026
 | Host         : ximao running 64-bit major release  (build 9200)
 | Command      : report_methodology -file Top_Piano_methodology_drc_routed.rpt -pb Top_Piano_methodology_drc_routed.pb -rpx Top_Piano_methodology_drc_routed.rpx
 | Design       : Top_Piano
@@ -23,11 +23,11 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 374
+             Violations found: 378
 +-----------+----------+-----------------------------+------------+
 | Rule      | Severity | Description                 | Violations |
 +-----------+----------+-----------------------------+------------+
-| TIMING-17 | Warning  | Non-clocked sequential cell | 374        |
+| TIMING-17 | Warning  | Non-clocked sequential cell | 378        |
 +-----------+----------+-----------------------------+------------+
 
 2. REPORT DETAILS
@@ -939,965 +939,985 @@ Related violations: <none>
 
 TIMING-17#182 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/display_last_reg[0]/C is not reached by a timing clock
+The clock pin u_vga_inst/d_num_last_reg[0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#183 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/display_last_reg[1]/C is not reached by a timing clock
+The clock pin u_vga_inst/d_num_last_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#184 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/display_last_reg[2]/C is not reached by a timing clock
+The clock pin u_vga_inst/d_num_last_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#185 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_active_reg[0]/C is not reached by a timing clock
+The clock pin u_vga_inst/d_num_sync_reg[0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#186 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_active_reg[10]/C is not reached by a timing clock
+The clock pin u_vga_inst/d_num_sync_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#187 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_active_reg[11]/C is not reached by a timing clock
+The clock pin u_vga_inst/d_num_sync_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#188 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_active_reg[1]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_active_reg[0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#189 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_active_reg[2]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_active_reg[10]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#190 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_active_reg[3]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_active_reg[11]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#191 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_active_reg[4]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_active_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#192 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_active_reg[5]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_active_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#193 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_active_reg[6]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_active_reg[3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#194 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_active_reg[7]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_active_reg[4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#195 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_active_reg[8]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_active_reg[5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#196 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_active_reg[9]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_active_reg[6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#197 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[0][0]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_active_reg[7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#198 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[0][1]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_active_reg[8]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#199 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[0][2]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_active_reg[9]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#200 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[0][3]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[0][0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#201 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[0][4]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[0][1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#202 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[10][0]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[0][2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#203 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[10][1]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[0][3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#204 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[10][2]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[0][4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#205 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[10][3]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[10][0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#206 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[10][4]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[10][1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#207 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[11][0]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[10][2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#208 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[11][1]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[10][3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#209 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[11][2]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[10][4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#210 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[11][3]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[11][0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#211 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[11][4]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[11][1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#212 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[1][0]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[11][2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#213 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[1][1]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[11][3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#214 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[1][2]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[11][4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#215 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[1][3]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[1][0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#216 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[1][4]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[1][1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#217 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[2][0]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[1][2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#218 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[2][1]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[1][3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#219 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[2][2]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[1][4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#220 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[2][3]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[2][0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#221 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[2][4]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[2][1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#222 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[3][0]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[2][2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#223 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[3][1]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[2][3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#224 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[3][2]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[2][4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#225 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[3][3]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[3][0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#226 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[3][4]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[3][1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#227 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[4][0]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[3][2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#228 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[4][1]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[3][3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#229 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[4][2]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[3][4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#230 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[4][3]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[4][0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#231 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[4][4]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[4][1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#232 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[5][0]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[4][2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#233 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[5][1]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[4][3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#234 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[5][2]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[4][4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#235 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[5][3]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[5][0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#236 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[5][4]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[5][1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#237 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[6][0]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[5][2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#238 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[6][1]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[5][3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#239 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[6][2]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[5][4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#240 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[6][3]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[6][0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#241 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[6][4]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[6][1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#242 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[7][0]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[6][2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#243 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[7][1]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[6][3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#244 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[7][2]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[6][4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#245 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[7][3]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[7][0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#246 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[7][4]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[7][1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#247 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[8][0]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[7][2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#248 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[8][1]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[7][3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#249 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[8][2]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[7][4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#250 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[8][3]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[8][0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#251 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[8][4]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[8][1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#252 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[9][0]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[8][2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#253 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[9][1]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[8][3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#254 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[9][2]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[8][4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#255 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[9][3]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[9][0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#256 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_x_reg[9][4]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[9][1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#257 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[0][2]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[9][2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#258 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[0][3]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[9][3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#259 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[0][4]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_x_reg[9][4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#260 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[0][5]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[0][2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#261 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[0][6]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[0][3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#262 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[0][7]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[0][4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#263 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[0][8]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[0][5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#264 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[0][9]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[0][6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#265 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[10][2]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[0][7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#266 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[10][3]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[0][8]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#267 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[10][4]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[0][9]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#268 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[10][5]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[10][2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#269 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[10][6]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[10][3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#270 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[10][7]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[10][4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#271 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[10][8]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[10][5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#272 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[10][9]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[10][6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#273 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[11][2]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[10][7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#274 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[11][3]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[10][8]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#275 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[11][4]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[10][9]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#276 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[11][5]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[11][2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#277 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[11][6]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[11][3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#278 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[11][7]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[11][4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#279 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[11][8]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[11][5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#280 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[11][9]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[11][6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#281 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[1][2]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[11][7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#282 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[1][3]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[11][8]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#283 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[1][4]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[11][9]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#284 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[1][5]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[1][2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#285 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[1][6]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[1][3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#286 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[1][7]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[1][4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#287 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[1][8]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[1][5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#288 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[1][9]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[1][6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#289 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[2][2]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[1][7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#290 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[2][3]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[1][8]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#291 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[2][4]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[1][9]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#292 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[2][5]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[2][2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#293 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[2][6]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[2][3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#294 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[2][7]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[2][4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#295 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[2][8]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[2][5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#296 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[2][9]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[2][6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#297 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[3][2]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[2][7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#298 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[3][3]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[2][8]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#299 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[3][4]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[2][9]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#300 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[3][5]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[3][2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#301 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[3][6]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[3][3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#302 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[3][7]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[3][4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#303 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[3][8]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[3][5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#304 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[3][9]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[3][6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#305 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[4][2]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[3][7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#306 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[4][3]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[3][8]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#307 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[4][4]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[3][9]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#308 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[4][5]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[4][2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#309 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[4][6]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[4][3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#310 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[4][7]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[4][4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#311 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[4][8]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[4][5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#312 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[4][9]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[4][6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#313 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[5][2]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[4][7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#314 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[5][3]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[4][8]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#315 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[5][4]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[4][9]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#316 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[5][5]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[5][2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#317 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[5][6]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[5][3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#318 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[5][7]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[5][4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#319 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[5][8]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[5][5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#320 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[5][9]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[5][6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#321 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[6][2]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[5][7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#322 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[6][3]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[5][8]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#323 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[6][4]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[5][9]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#324 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[6][5]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[6][2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#325 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[6][6]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[6][3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#326 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[6][7]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[6][4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#327 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[6][8]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[6][5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#328 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[6][9]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[6][6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#329 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[7][2]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[6][7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#330 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[7][3]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[6][8]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#331 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[7][4]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[6][9]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#332 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[7][5]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[7][2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#333 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[7][6]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[7][3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#334 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[7][7]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[7][4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#335 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[7][8]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[7][5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#336 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[7][9]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[7][6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#337 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[8][2]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[7][7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#338 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[8][3]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[7][8]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#339 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[8][4]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[7][9]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#340 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[8][5]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[8][2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#341 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[8][6]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[8][3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#342 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[8][7]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[8][4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#343 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[8][8]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[8][5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#344 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[8][9]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[8][6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#345 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[9][2]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[8][7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#346 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[9][3]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[8][8]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#347 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[9][4]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[8][9]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#348 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[9][5]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[9][2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#349 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[9][6]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[9][3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#350 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[9][7]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[9][4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#351 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[9][8]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[9][5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#352 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/eff_y_reg[9][9]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[9][6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#353 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/h_cnt_reg[0]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[9][7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#354 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/h_cnt_reg[1]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[9][8]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#355 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/h_cnt_reg[2]/C is not reached by a timing clock
+The clock pin u_vga_inst/eff_y_reg[9][9]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#356 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/h_cnt_reg[3]/C is not reached by a timing clock
+The clock pin u_vga_inst/h_cnt_reg[0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#357 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/h_cnt_reg[4]/C is not reached by a timing clock
+The clock pin u_vga_inst/h_cnt_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#358 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/h_cnt_reg[5]/C is not reached by a timing clock
+The clock pin u_vga_inst/h_cnt_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#359 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/h_cnt_reg[6]/C is not reached by a timing clock
+The clock pin u_vga_inst/h_cnt_reg[3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#360 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/h_cnt_reg[7]/C is not reached by a timing clock
+The clock pin u_vga_inst/h_cnt_reg[4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#361 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/h_cnt_reg[8]/C is not reached by a timing clock
+The clock pin u_vga_inst/h_cnt_reg[5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#362 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/h_cnt_reg[9]/C is not reached by a timing clock
+The clock pin u_vga_inst/h_cnt_reg[6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#363 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/trig_sync_1_reg/C is not reached by a timing clock
+The clock pin u_vga_inst/h_cnt_reg[7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#364 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/trig_sync_2_reg/C is not reached by a timing clock
+The clock pin u_vga_inst/h_cnt_reg[8]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#365 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/v_cnt_reg[0]/C is not reached by a timing clock
+The clock pin u_vga_inst/h_cnt_reg[9]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#366 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/v_cnt_reg[1]/C is not reached by a timing clock
+The clock pin u_vga_inst/t_sync_0_reg/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#367 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/v_cnt_reg[2]/C is not reached by a timing clock
+The clock pin u_vga_inst/t_sync_1_reg/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#368 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/v_cnt_reg[3]/C is not reached by a timing clock
+The clock pin u_vga_inst/t_sync_2_reg/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#369 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/v_cnt_reg[4]/C is not reached by a timing clock
+The clock pin u_vga_inst/v_cnt_reg[0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#370 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/v_cnt_reg[5]/C is not reached by a timing clock
+The clock pin u_vga_inst/v_cnt_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#371 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/v_cnt_reg[6]/C is not reached by a timing clock
+The clock pin u_vga_inst/v_cnt_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#372 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/v_cnt_reg[7]/C is not reached by a timing clock
+The clock pin u_vga_inst/v_cnt_reg[3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#373 Warning
 Non-clocked sequential cell  
-The clock pin u_vga_inst/v_cnt_reg[8]/C is not reached by a timing clock
+The clock pin u_vga_inst/v_cnt_reg[4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#374 Warning
+Non-clocked sequential cell  
+The clock pin u_vga_inst/v_cnt_reg[5]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#375 Warning
+Non-clocked sequential cell  
+The clock pin u_vga_inst/v_cnt_reg[6]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#376 Warning
+Non-clocked sequential cell  
+The clock pin u_vga_inst/v_cnt_reg[7]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#377 Warning
+Non-clocked sequential cell  
+The clock pin u_vga_inst/v_cnt_reg[8]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#378 Warning
 Non-clocked sequential cell  
 The clock pin u_vga_inst/v_cnt_reg[9]/C is not reached by a timing clock
 Related violations: <none>
