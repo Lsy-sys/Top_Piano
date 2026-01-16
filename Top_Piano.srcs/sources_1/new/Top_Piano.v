@@ -7,7 +7,7 @@ module Top_Piano(
     input sw2,            // 音色切换
     input btn_s4,         // 小星星
     input btn_r11,        // 传邮万里
-    input btn_r17,        // 恭喜发财
+    input btn_r17,        // 进击的巨人
     output audio_pwm,   
     output [3:0] vga_r,
     output [3:0] vga_g,
@@ -22,7 +22,7 @@ module Top_Piano(
 
     assign audio_sd = sw0;
 
-    // --- 1. 内部寄存器定义 ---
+    //内部寄存器
     reg [3:0]  ps2_cnt = 0;
     reg [10:0] ps2_buffer = 0;
     reg [7:0]  key_code = 0;
@@ -41,20 +41,20 @@ module Top_Piano(
     reg        is_break = 0;
     reg [7:0]  playing_key = 0;
 
-    // CDC 关键信号：电平翻转触发信号
+    //CDC电平翻转触发信号
     reg note_trigger_toggle = 0;
 
-    // 时长参数 (120 BPM 风格)
-    localparam LEN_1   = 100_000_000; // 1 ??
-    localparam LEN_1_2 = 50_000_000;  // 1/2 ??
-    localparam LEN_1_4 = 25_000_000;  // 1/4 ??
-    localparam LEN_1_8 = 12_500_000;  // 1/8 ??
+    //时长参数 
+    localparam LEN_1   = 100_000_000; // 1 拍
+    localparam LEN_1_2 = 50_000_000;  // 1/2 
+    localparam LEN_1_4 = 25_000_000;  // 1/4 
+    localparam LEN_1_8 = 12_500_000;  // 1/8 
 
     reg sw1_reg;
     always @(posedge clk) sw1_reg <= sw1;
     wire mode_change_reset = (sw1 ^ sw1_reg);
 
-    // --- 2. 自动播放与翻转触发逻辑 ---
+    //自动播放与翻转触发
     always @(posedge clk) begin
         if (!sw0 || !sw1 || mode_change_reset) begin
             play_en <= 1'b0; song_select <= 2'd0; beat_cnt <= 0; score_ptr <= 0;
@@ -91,7 +91,7 @@ module Top_Piano(
         end
     end
 
-    // --- 3. PS2 接收逻辑 ---
+    //PS2 接收逻辑
     always @(posedge clk) begin ps2_clk_sync <= ps2_clk; ps2_clk_last <= ps2_clk_sync; end
     wire ps2_fall = (ps2_clk_last && !ps2_clk_sync);
     always @(posedge clk) begin
@@ -112,7 +112,7 @@ module Top_Piano(
         end
     end
 
-    // --- 4. 乐谱存储 ---
+    //乐谱存储
     parameter NO=8'h00;
     parameter L5=8'h2E, L6=8'h36, L7=8'h3D; 
     parameter K1=8'h15, K2=8'h1D, K3=8'h24, K4=8'h2D, K5=8'h2C, K6=8'h35, K7=8'h3C;
@@ -154,7 +154,7 @@ module Top_Piano(
             endcase
         end else if (song_select == 2'd2) begin
             case(score_ptr)
-               // --- 第1句：团结在这里凝聚 ---
+               // 团结在这里凝聚
                 0: begin auto_key_code = L5; current_note_duration = LEN_1_2; end
                 1: begin auto_key_code = K3; current_note_duration = LEN_1_2 + LEN_1_4; end
                 2: begin auto_key_code = K3; current_note_duration = LEN_1_4; end
@@ -162,8 +162,8 @@ module Top_Piano(
                 4: begin auto_key_code = K3; current_note_duration = LEN_1_8; end
                 5: begin auto_key_code = K4; current_note_duration = LEN_1_4 + LEN_1_8; end
                 6: begin auto_key_code = K5; current_note_duration = LEN_1_8; end
-                7: begin auto_key_code = K2; current_note_duration = LEN_1 + LEN_1_2; end // 3拍长音
-                // --- 第2句：勤奋从这里出发 ---
+                7: begin auto_key_code = K2; current_note_duration = LEN_1 + LEN_1_2; end 
+                // 勤奋从这里蓄发
                 8: begin auto_key_code = L5; current_note_duration = LEN_1_2; end  
                 9: begin auto_key_code = K2; current_note_duration = LEN_1_2 + LEN_1_4; end
                 10:begin auto_key_code = K2; current_note_duration = LEN_1_4; end
@@ -172,7 +172,7 @@ module Top_Piano(
                 13:begin auto_key_code = K3; current_note_duration = LEN_1_4 + LEN_1_8; end
                 14:begin auto_key_code = K4; current_note_duration = LEN_1_8; end
                 15:begin auto_key_code = K3; current_note_duration = LEN_1 + LEN_1_2; end
-                // --- 第3句：给我一双理想的翅膀 ---
+                // 给我一双理想的翅膀 
                 16:begin auto_key_code = K1; current_note_duration = LEN_1_2; end
                 17:begin auto_key_code = K6; current_note_duration = LEN_1_2 + LEN_1_4; end
                 18:begin auto_key_code = K6; current_note_duration = LEN_1_4; end
@@ -182,8 +182,8 @@ module Top_Piano(
                 22:begin auto_key_code = H1; current_note_duration = LEN_1_8; end
                 23:begin auto_key_code = K5; current_note_duration = LEN_1_2; end
                 24:begin auto_key_code = K4; current_note_duration = LEN_1_2; end
-                25:begin auto_key_code = K3; current_note_duration = LEN_1_2 + LEN_1_4; end // 附点四分
-                // --- 第4句：追赶东方灿烂的朝霞 ---
+                25:begin auto_key_code = K3; current_note_duration = LEN_1_2 + LEN_1_4; end 
+                // 追赶东方灿烂的朝霞 
                 26:begin auto_key_code = L6; current_note_duration = LEN_1_4; end
                 27:begin auto_key_code = K4; current_note_duration = LEN_1_2 + LEN_1_4; end
                 28:begin auto_key_code = K4; current_note_duration = LEN_1_4; end
@@ -192,7 +192,7 @@ module Top_Piano(
                 31:begin auto_key_code = K5; current_note_duration = LEN_1_8; end
                 32:begin auto_key_code = K6; current_note_duration = LEN_1_8; end
                 33:begin auto_key_code = K5; current_note_duration = LEN_1_2; end
-                34:begin auto_key_code = K2; current_note_duration = LEN_1; end   // 2拍
+                34:begin auto_key_code = K2; current_note_duration = LEN_1; end   
 
             endcase
         end else if (song_select == 2'd3) begin
@@ -247,7 +247,7 @@ module Top_Piano(
         end
     end
 
-    // --- 5. 频率查找表 (全量 21 音) ---
+    //频率查找表 
     wire [7:0] current_key = (sw1) ? (play_en ? auto_key_code : 8'h00) : key_code;
     wire       current_valid = (mode_change_reset) ? 1'b0 : ((sw1) ? (play_en && beat_cnt == 28'd1) : key_valid);
 
@@ -293,7 +293,7 @@ module Top_Piano(
         end
     end
 
-    // --- 6. 声音与 PWM 逻辑 ---
+    // 声音与 PWM 
     reg [7:0] sine_rom [0:255];
     initial $readmemh("sine_table.txt", sine_rom);
     reg [17:0] sq_cnt = 0; reg sq_wave = 0;
@@ -315,7 +315,7 @@ module Top_Piano(
     wire auto_mute = (sw1 && play_en && beat_cnt > (current_note_duration - 5_000_000));
     assign audio_pwm = final_wave & sw0 & !auto_mute & !mode_change_reset;
 
-    // --- 7. 数码管译码 ---
+    // 数码管译码 
     function [7:0] decode(input [3:0] n);
         case(n)
             1: decode = 8'h06; 2: decode = 8'h5B; 3: decode = 8'h4F;

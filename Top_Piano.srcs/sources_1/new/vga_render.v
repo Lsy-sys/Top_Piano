@@ -8,11 +8,10 @@ module vga_render(
     output vga_hs, vga_vs
 );
 
-    // --- 1. 时钟与同步 ---
+    //时钟与同步
     reg [1:0] clk_div;
     always @(posedge clk_100m) clk_div <= clk_div + 1;
     wire pix_clk = clk_div[1];
-
     parameter H_ACTIVE = 640, H_FP = 16, H_SYNC = 96, H_BP = 48, H_TOTAL = 800;
     parameter V_ACTIVE = 480, V_FP = 10, V_SYNC = 2,  V_BP = 33, V_TOTAL = 525;
     
@@ -29,21 +28,19 @@ module vga_render(
     assign vga_vs = ~(v_cnt >= (V_ACTIVE + V_FP) && v_cnt < (V_ACTIVE + V_FP + V_SYNC));
     wire video_en = (h_cnt < H_ACTIVE) && (v_cnt < V_ACTIVE);
 
-    // --- 2. 坐标与位置参数 ---
+    //坐标与位置参数
     localparam KEY_W = 30;
     localparam START_X = 5;
     localparam PIANO_WIDTH = 630;
     
     wire in_piano_x = (h_cnt >= START_X && h_cnt < (START_X + PIANO_WIDTH));
     wire [4:0] current_key_idx = in_piano_x ? (h_cnt - START_X) / KEY_W : 5'd31;
-    
     wire [4:0] active_key_index = (octave_num >= 1 && display_num >= 1) ?
                                   ((octave_num - 1) * 7 + (display_num - 1)) : 5'd31;
-    
     wire [9:0] rel_x = in_piano_x ? (h_cnt - START_X) : 10'd0;
     wire [7:0] x_in_octave = rel_x % (KEY_W * 7);
 
-    // --- 3. 跨时钟域触发同步 ---
+    //跨时钟域触发同步
     reg t_sync_0, t_sync_1, t_sync_2;
     reg [3:0] d_num_sync, d_num_last;
     always @(posedge vga_vs) begin
@@ -56,7 +53,7 @@ module vga_render(
     
     wire press_trigger = (t_sync_1 ^ t_sync_2) || (d_num_sync != 0 && d_num_last == 0);
 
-    // --- 4. 瀑布流逻辑 ---
+    //色块下落逻辑
     localparam MAX_EFF = 12;
     localparam EFF_HEIGHT = 60;
     reg [9:0] eff_y [0:MAX_EFF-1];
@@ -65,18 +62,18 @@ module vga_render(
 
     integer i;
     always @(posedge vga_vs) begin
-        // 音符块移动逻辑
+        //音符块移动逻辑
         for (i = 0; i < MAX_EFF; i = i + 1) begin
             if (eff_active[i]) begin
                 if (eff_y[i] <= 10'd45) 
                     eff_active[i] <= 1'b0;
                 else 
-                    // 【速度优化】：下落量从 4 减为 3
+                    // 下落速度
                     eff_y[i] <= eff_y[i] - 10'd3; 
             end
         end
         
-        // 新音符入队逻辑
+        //新音符入队
         if (press_trigger && active_key_index != 5'd31) begin
             casex (eff_active)
                 12'bxxxx_xxxx_xxx0: begin eff_active[0] <= 1; eff_x[0] <= active_key_index; eff_y[0] <= 10'd300; end
@@ -96,7 +93,7 @@ module vga_render(
         end
     end
 
-    // --- 5. 渲染逻辑 ---
+    //渲染逻辑
     wire is_black_key = (v_cnt >= 300 && v_cnt < 410) && in_piano_x && (
         (x_in_octave >= 22  && x_in_octave <= 38)  || 
         (x_in_octave >= 52  && x_in_octave <= 68)  || 
@@ -118,7 +115,7 @@ module vga_render(
         end
     end
 
-    // 最终色彩分配
+    //色彩分配
     always @(*) begin
         if (!video_en) begin
             {vga_r, vga_g, vga_b} = 12'h000;
@@ -128,10 +125,8 @@ module vga_render(
             end 
             else if (v_cnt >= 50 && v_cnt < 300) begin
                 if (in_effect)
-                    // 【色彩优化】：暖色调（红-橙-金渐变）
-                    // 1. R 固定为 F (最大红色)
-                    // 2. G 使用 v_cnt[8:5] 确保平滑，不发生突变。由于 B 被置 0，只会产生红橙黄色系
-                    // 3. B 固定为 0，彻底移除粉紫色
+                    // 暖色调（红-橙-金渐变）
+                    // R 固定为 F，固定为红色，加渐变
                     {vga_r, vga_g, vga_b} = {4'hF, v_cnt[8:5] + 4'd2, 4'h0};
                 else
                     {vga_r, vga_g, vga_b} = 12'h112;
