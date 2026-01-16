@@ -54,7 +54,7 @@ module Top_Piano(
     always @(posedge clk) sw1_reg <= sw1;
     wire mode_change_reset = (sw1 ^ sw1_reg);
 
-    //自动播放与翻转触发
+//自动播放与翻转触发
 always @(posedge clk) 
 begin
         if (!sw0 || !sw1 || mode_change_reset) 
@@ -107,7 +107,7 @@ begin
         end
 end
 
-    // PS2 接收逻辑
+// PS2 接收逻辑
 always @(posedge clk) begin ps2_clk_sync <= ps2_clk; ps2_clk_last <= ps2_clk_sync; end
 wire ps2_fall = (ps2_clk_last && !ps2_clk_sync);
 
